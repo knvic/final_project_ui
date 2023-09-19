@@ -17,7 +17,8 @@ public class PracticeFormTests extends BaseTest{
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "Testing", url = "https://github.com")
     @DisplayName("Запуск проекта заполнения формы с использованием Jenkins")
-     @Test
+    @Test
+    @Tag("local")
     void txtForm() {
         open("/automation-practice-form");
 

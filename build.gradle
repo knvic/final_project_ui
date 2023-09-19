@@ -72,7 +72,7 @@ task run_jenkins_smoke(type: Test) {
         includeTags("smoke")
     }
 }
-task simple_test(type: Test) {
+task local_test(type: Test) {
     useJUnitPlatform {
         includeTags("local")
     }
