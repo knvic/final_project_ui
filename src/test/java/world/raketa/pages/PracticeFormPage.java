@@ -1,9 +1,9 @@
-package guru.qa.pages;
+package world.raketa.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import guru.qa.pages.components.CalendarComponent;
-import guru.qa.pages.components.ResultTableComponent;
+import world.raketa.pages.components.CalendarComponent;
+import world.raketa.pages.components.ResultTableComponent;
 
 import java.util.List;
 

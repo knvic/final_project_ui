@@ -1,4 +1,4 @@
-package guru.qa.pages;
+package world.raketa.pages;
 
 import com.codeborne.selenide.SelenideElement;
 

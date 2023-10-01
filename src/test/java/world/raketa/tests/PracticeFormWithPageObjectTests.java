@@ -1,6 +1,6 @@
-package guru.qa.tests;
+package world.raketa.tests;
 
-import guru.qa.pages.PracticeFormPage;
+import world.raketa.pages.PracticeFormPage;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;

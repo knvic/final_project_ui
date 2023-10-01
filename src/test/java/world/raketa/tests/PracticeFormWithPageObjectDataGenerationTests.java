@@ -1,7 +1,7 @@
-package guru.qa.tests;
+package world.raketa.tests;
 
-import guru.qa.pages.PracticeFormPage;
-import guru.qa.utils.DataGenerationUtils;
+import world.raketa.pages.PracticeFormPage;
+import world.raketa.utils.DataGenerationUtils;
 
 import static io.qameta.allure.Allure.step;
 

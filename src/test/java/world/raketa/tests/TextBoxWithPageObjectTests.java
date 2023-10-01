@@ -1,7 +1,7 @@
-package guru.qa.tests;
+package world.raketa.tests;
 
 
-import guru.qa.pages.TextBoxPage;
+import world.raketa.pages.TextBoxPage;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 

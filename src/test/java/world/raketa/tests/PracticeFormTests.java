@@ -1,4 +1,4 @@
-package guru.qa.tests;
+package world.raketa.tests;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.*;

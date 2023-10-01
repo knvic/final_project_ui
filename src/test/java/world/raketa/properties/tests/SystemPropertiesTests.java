@@ -1,4 +1,4 @@
-package guru.qa.properties.tests;
+package world.raketa.properties.tests;
 
 
 import org.junit.jupiter.api.Tag;

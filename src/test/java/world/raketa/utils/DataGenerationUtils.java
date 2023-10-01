@@ -1,4 +1,4 @@
-package guru.qa.utils;
+package world.raketa.utils;
 
 
 

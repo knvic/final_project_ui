@@ -42,7 +42,7 @@ dependencies {
     testImplementation('com.github.javafaker:javafaker:1.0.2')
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.10.0'
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.10.0'
-
+    testImplementation('org.junit.jupiter:junit-jupiter-params:5.9.2')
 
     //implementation group: 'net.datafaker', name: 'datafaker', version: '1.0.2'
 
@@ -61,6 +61,12 @@ tasks.withType(Test) {
     }
 }
 
+
+task run_raketa(type: Test) {
+    useJUnitPlatform {
+        includeTags("raketa")
+    }
+}
 task run_jenkins_remote_param(type: Test) {
     useJUnitPlatform {
         includeTags("remote")

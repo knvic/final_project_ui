@@ -1,4 +1,4 @@
-package guru.qa.tests;
+package world.raketa.tests;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
