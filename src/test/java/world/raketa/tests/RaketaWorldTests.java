@@ -1,7 +1,7 @@
 package world.raketa.tests;
 
 import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.Disabled;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -11,14 +11,12 @@ import org.junit.jupiter.params.provider.MethodSource;
 import world.raketa.pages.Locale;
 import world.raketa.pages.RaketaWorldPage;
 
-import java.time.Duration;
+
 import java.util.List;
-import java.util.Optional;
+
 import java.util.stream.Stream;
 
-import static com.codeborne.selenide.CollectionCondition.texts;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
@@ -26,31 +24,6 @@ public class RaketaWorldTests extends RaketaBaseTest {
     RaketaWorldPage raketaWorldPage = new RaketaWorldPage();
     private static int count = 0;
 
-    @Disabled
-    @Tag("raketa")
-    @Test
-    void aboutCompany() {
-
-        step("Открытие сайта", () -> {
-            raketaWorldPage
-                    .openPage();
-        });
-        $$(".t199__holder li").first().hover();
-        $$(".t199__holder li").first().sibling(0).hover();
-        // $$(".t199__holder li").first().shouldHave(text("КОМПАНИЯ"));
-        //  $$(".t199__holder li").first().sibling(0).shouldHave(text("ПРОДУКТЫ"));
-
-        //$$(".t199__holder li").first().hover().shouldHave(text("О компании")).shouldBe(visible);
-
-
-        //$("[role=list]").$$("li").first().hover();
-        //$$(".t-menusub__content li").first().click();
-        // $("[aria-label='Основная навигация']").shouldHave(text("КОМПАНИЯ"));
-        // $("[aria-label='Основная навигация']").shouldHave(text("ПРОДУКТЫ"));
-        // $$("div").findBy(text(" Мы создаем короткие, но интересные новости.")).shouldBe(visible, Duration.ofSeconds(5));
-
-
-    }
 
     static Stream<Arguments> parameterize1() {
         return Stream.of(
@@ -58,8 +31,7 @@ public class RaketaWorldTests extends RaketaBaseTest {
                 Arguments.of(Locale.EN, List.of("COMPANY", "PRODUCTS", "FOR CLIENTS", "GET STARTED", "CONTACTS", "LOGIN"))
         );
     }
-
-    @DisplayName("Параметризованный тест с использованием Stream<Arguments> и ENUM")
+    @DisplayName("Параметризованный тест проверки наличия списка основного меню в разных локалях")
     @MethodSource("parameterize1")
     @Tag("raketa")
     @ParameterizedTest(name = "Проверка меню сайта при перелючении локали на {0} отображается меню {1}")
@@ -69,10 +41,16 @@ public class RaketaWorldTests extends RaketaBaseTest {
                     .openPage();
         });
 
+        step("Выбор локали ", () -> {
+            raketaWorldPage
+                    .setLocale(locale);
 
-        raketaWorldPage
-                .setLocale(locale)
-                .shouldHaveTargetMenu(list);
+        });
+
+        step("Проверка наличия элементов меню согласно списка, а ,так же, соответствия с выбранным языком", () -> {
+            raketaWorldPage
+                    .shouldHaveTargetMenu(list);
+        });
         Selenide.closeWindow();
 
     }
@@ -86,19 +64,20 @@ public class RaketaWorldTests extends RaketaBaseTest {
         );
     }
 
-    @DisplayName("Параметризованный тест с использованием Stream<Arguments> и ENUM")
+    @DisplayName("Параметризованный тест проверки списка элементов выпадаюзешл меню пр наведении на элементы основного меню.")
     @MethodSource("parameterize2")
     @Tag("raketa")
-    @ParameterizedTest(name = "Проверка меню сайта при перелючении локали на {0} отображается меню {1}")
+    @ParameterizedTest(name = "Проверка наличия выпадающего списка элементов. при наведениина пункт меню  {0} отображается элементы списка {1}")
     void parameterize2(String item, List<String> list) {
         step("Открытие сайта", () -> {
             raketaWorldPage
                     .openPage();
         });
-
+        sleep(2000);
+        step("Проверка элементов выпадающего меню соотсетствию списка.", () -> {
         raketaWorldPage
                 .checkElementsPullDownMenu(list, count, item);
-
+        });
         count++;
 
         Selenide.closeWindow();
@@ -137,7 +116,8 @@ public class RaketaWorldTests extends RaketaBaseTest {
             raketaWorldPage
                     .yoga();
         });
-        Selenide.refresh();
+        //Selenide.refresh();
+        Selenide.closeWindow();
     }
 
 }
