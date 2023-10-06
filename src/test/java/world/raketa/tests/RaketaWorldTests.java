@@ -2,6 +2,7 @@ package world.raketa.tests;
 
 import com.codeborne.selenide.Selenide;
 
+import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -25,23 +26,29 @@ public class RaketaWorldTests extends RaketaBaseTest {
     private static int count = 0;
 
 
-    static Stream<Arguments> parameterize1() {
+    static Stream<Arguments> changeLocaleTest() {
         return Stream.of(
                 Arguments.of(Locale.RU, List.of("КОМПАНИЯ", "ПРОДУКТЫ", "КЛИЕНТАМ", "СТАТЬ КЛИЕНТОМ", "КОНТАКТЫ", "ВОЙТИ")),
                 Arguments.of(Locale.EN, List.of("COMPANY", "PRODUCTS", "FOR CLIENTS", "GET STARTED", "CONTACTS", "LOGIN"))
         );
     }
+    @Epic("Ракета")
+    @Feature("Первоначальное тестирование")
+    @Story("Переключение локали")
+    @Owner("krivorotovnv")
+    @Severity(SeverityLevel.BLOCKER)
+    @Link(value = "Testing", url = "https://raketa.world")
     @DisplayName("Параметризованный тест проверки наличия списка основного меню в разных локалях")
-    @MethodSource("parameterize1")
+    @MethodSource("changeLocaleTest")
     @Tag("raketa")
     @ParameterizedTest(name = "Проверка меню сайта при перелючении локали на {0} отображается меню {1}")
-    void parameterize1(Locale locale, List<String> list) {
+    void changeLocaleTest(Locale locale, List<String> list) {
         step("Открытие сайта", () -> {
             raketaWorldPage
                     .openPage();
         });
 
-        step("Выбор локали ", () -> {
+        step("Выбор локали {0}", () -> {
             raketaWorldPage
                     .setLocale(locale);
 
@@ -63,8 +70,13 @@ public class RaketaWorldTests extends RaketaBaseTest {
 
         );
     }
-
-    @DisplayName("Параметризованный тест проверки списка элементов выпадаюзешл меню пр наведении на элементы основного меню.")
+    @Epic("Ракета")
+    @Feature("Первоначальное тестирование")
+    @Story("Соответствие путктов меню")
+    @Owner("krivorotovnv")
+    @Severity(SeverityLevel.BLOCKER)
+    @Link(value = "Testing", url = "https://raketa.world")
+    @DisplayName("Параметризованный тест проверки списка элементов выпадаюзешл меню при наведении на элементы основного меню.")
     @MethodSource("parameterize2")
     @Tag("raketa")
     @ParameterizedTest(name = "Проверка наличия выпадающего списка элементов. при наведениина пункт меню  {0} отображается элементы списка {1}")
@@ -84,6 +96,14 @@ public class RaketaWorldTests extends RaketaBaseTest {
         // Selenide.refresh();
     }
 
+
+    @Epic("Ракета")
+    @Feature("Первоначальное тестирование")
+    @Story("Проверка наличия ссылки на страницу вакансий")
+    @Owner("krivorotovnv")
+    @Severity(SeverityLevel.BLOCKER)
+    @Link(value = "Testing", url = "https://raketa.world")
+    @DisplayName("Тест проверки ссылки на страницу вакансий со страницы карьера..")
     @Tag("raketa")
     @Test
     void yoga() {
@@ -96,27 +116,33 @@ public class RaketaWorldTests extends RaketaBaseTest {
             raketaWorldPage
                     .career();
         });
-        step("Переход в вакансии", () -> {
+        step("Проверка наличия ссылки на вакансии", () -> {
             raketaWorldPage
                     .vacancyQA();
         });
 
         Selenide.closeWindow();
-        // Selenide.refresh();
     }
 
+    @Epic("Ракета")
+    @Feature("Первоначальное тестирование")
+    @Story("Проверка наличия главного условия в работе")
+    @Owner("krivorotovnv")
+    @Severity(SeverityLevel.BLOCKER)
+    @Link(value = "Testing", url = "https://job.raketa.world/qaautomation")
+    @DisplayName("Тестирование наличия опции Йога в обед в условиях работы")
     @Tag("raketa")
     @Test
     void yoga1() {
-        step("Открытие сайта", () -> {
+        step("Открытие сайта на странице карьера", () -> {
             open("https://job.raketa.world/qaautomation");
         });
 
-        step("Переход на страницу Карьера", () -> {
+        step("Поиск коючевого слова Йога в обед в условиях работы", () -> {
             raketaWorldPage
                     .yoga();
         });
-        //Selenide.refresh();
+
         Selenide.closeWindow();
     }
 

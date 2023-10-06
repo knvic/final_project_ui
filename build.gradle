@@ -73,22 +73,6 @@ task run_jenkins_remote_param(type: Test) {
     }
 }
 
-task run_jenkins_smoke(type: Test) {
-    useJUnitPlatform {
-        includeTags("smoke")
-    }
-}
-task local_test(type: Test) {
-    useJUnitPlatform {
-        includeTags("local")
-    }
-}
-
-task property_test(type: Test) {
-        useJUnitPlatform {
-            includeTags("properties")
-        }
-    }
 
 
 
