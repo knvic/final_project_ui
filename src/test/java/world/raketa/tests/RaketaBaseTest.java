@@ -11,7 +11,8 @@ public class RaketaBaseTest {
     @BeforeAll
     static void beforeAll() {
        // SelenideLogger.addListener("Allure", new AllureSelenide());
-        System.setProperty("selenide.browser", "Chrome");
+        //System.setProperty("selenide.browser", "Chrome");
+        System.setProperty("selenide.browser", "ie");
         Configuration.baseUrl = "https://www.raketa.world";
         Configuration.browserSize = "1920x1800";
         Configuration.pageLoadStrategy = "eager";
