@@ -5,6 +5,7 @@ import com.codeborne.selenide.Selenide;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -21,7 +22,7 @@ import java.util.stream.Stream;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
-public class RaketaWorldTests extends RaketaBaseTest {
+public class RaketaWorldTests extends RaketaRemoteBaseTest {
     RaketaWorldPage raketaWorldPage = new RaketaWorldPage();
     private static int count = 0;
 
@@ -78,7 +79,11 @@ public class RaketaWorldTests extends RaketaBaseTest {
     @Link(value = "Testing", url = "https://raketa.world")
     @DisplayName("Параметризованный тест проверки списка элементов выпадаюзешл меню при наведении на элементы основного меню.")
     @MethodSource("parameterize2")
-    @Tag("raketa")
+   @Tags({
+           @Tag("raketa"),
+           @Tag("remote")
+   })
+
     @ParameterizedTest(name = "Проверка наличия выпадающего списка элементов. при наведениина пункт меню  {0} отображается элементы списка {1}")
     void parameterize2(String item, List<String> list) {
         step("Открытие сайта", () -> {
@@ -103,7 +108,7 @@ public class RaketaWorldTests extends RaketaBaseTest {
     @Owner("krivorotovnv")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "Testing", url = "https://raketa.world")
-    @DisplayName("Тест проверки ссылки на страницу вакансий со страницы карьера..")
+    @DisplayName("career Тест проверки ссылки на страницу вакансий со страницы карьера..")
     @Tag("raketa")
     @Test
     void yoga() {

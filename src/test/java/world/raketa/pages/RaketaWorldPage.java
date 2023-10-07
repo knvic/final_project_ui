@@ -57,7 +57,7 @@ public class RaketaWorldPage {
 
 
         for (String item : list) {
-            System.out.println("itemmenu= " + item + "  count= " + count);
+           // System.out.println("itemmenu= " + item + "  count= " + count);
             // $$(".t199__holder li").first().hover().shouldHave(text(item)).shouldBe(visible);
 
             if (count == 0) {

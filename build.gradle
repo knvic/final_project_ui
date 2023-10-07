@@ -62,12 +62,12 @@ tasks.withType(Test) {
 }
 
 
-task run_raketa(type: Test) {
+/*task run_raketa(type: Test) {
     useJUnitPlatform {
         includeTags("raketa")
     }
-}
-task run_jenkins_remote_param(type: Test) {
+}*/
+task run_remote(type: Test) {
     useJUnitPlatform {
         includeTags("remote")
     }
