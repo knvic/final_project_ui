@@ -79,7 +79,7 @@ public class RaketaWorldPage {
     public RaketaWorldPage career() {
        // pullDown.first().hover().findBy(text("123")).click();
         $$(".t199__holder li").first().hover();
-        $$(".t-menusub").first().hover().shouldHave(text("Карьера")).shouldBe(visible);
+        $$(".t-menusub").first().hover().shouldHave(text("Карьера")).shouldBe(visible, Duration.ofSeconds(10));
 
        $("[href='/career']").click();
         return this;

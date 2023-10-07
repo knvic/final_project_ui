@@ -119,7 +119,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
             raketaWorldPage
                     .openPage();
         });
-sleep(5000);
+//sleep(5000);
         step("Переход на страницу Карьера", () -> {
             raketaWorldPage
                     .career();
