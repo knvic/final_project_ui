@@ -44,12 +44,12 @@ public class RaketaRemoteBaseTest {
 
     @AfterEach
     void addAttachments() {
-        //Attach.screenshotAs("Last screenshot");
-      //  Attach.pageSource();
-     //   Attach.browserConsoleLogs();
-     //   Attach.addVideo();
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo();
 
-      //  closeWebDriver();
+        closeWebDriver();
     }
 
 
