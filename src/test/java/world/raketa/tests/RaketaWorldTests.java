@@ -79,10 +79,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
     @Link(value = "Testing", url = "https://raketa.world")
     @DisplayName("Параметризованный тест проверки списка элементов выпадаюзешл меню при наведении на элементы основного меню.")
     @MethodSource("parameterize2")
-   @Tags({
-           @Tag("raketa"),
-           @Tag("remote")
-   })
+    @Tag("raketa")
 
     @ParameterizedTest(name = "Проверка наличия выпадающего списка элементов. при наведениина пункт меню  {0} отображается элементы списка {1}")
     void parameterize2(String item, List<String> list) {
@@ -109,7 +106,11 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "Testing", url = "https://raketa.world")
     @DisplayName("career Тест проверки ссылки на страницу вакансий со страницы карьера..")
-    @Tag("raketa")
+
+    @Tags({
+            @Tag("raketa"),
+            @Tag("remote")
+    })
     @Test
     void yoga() {
         step("Открытие сайта", () -> {
@@ -126,7 +127,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
                     .vacancyQA();
         });
 
-        Selenide.closeWindow();
+        //Selenide.closeWindow();
     }
 
     @Epic("Ракета")
