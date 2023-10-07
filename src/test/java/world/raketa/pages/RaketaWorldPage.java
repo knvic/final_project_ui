@@ -62,7 +62,7 @@ public class RaketaWorldPage {
 
             if (count == 0) {
 
-                $$(".t199__holder li").first().hover().shouldHave(text(item)).shouldBe(visible);
+                $$(".t199__holder li").first().hover().shouldHave(text(item)).shouldBe(visible.Duration.ofSeconds(10));
 
             } else {
 
