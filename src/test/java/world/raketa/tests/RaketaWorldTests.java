@@ -62,7 +62,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
             raketaWorldPage
                     .shouldHaveTargetMenu(list);
         });
-        Selenide.closeWindow();
+        //Selenide.closeWindow();
 
     }
 
@@ -97,7 +97,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
         });
         count++;
 
-        Selenide.closeWindow();
+        //Selenide.closeWindow();
         // Selenide.refresh();
     }
 
@@ -152,7 +152,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
                     .yoga();
         });
 
-        Selenide.closeWindow();
+       // Selenide.closeWindow();
     }
 
 }
