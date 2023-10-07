@@ -12,6 +12,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import world.raketa.pages.Locale;
 import world.raketa.pages.RaketaWorldPage;
+import world.raketa.util.RaketaRemoteBaseTest;
 
 
 import java.util.List;
@@ -23,6 +24,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
 public class RaketaWorldTests extends RaketaRemoteBaseTest {
+   // public class RaketaWorldTests extends RaketaBaseTest {
     RaketaWorldPage raketaWorldPage = new RaketaWorldPage();
     private static int count = 0;
 
@@ -117,7 +119,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
             raketaWorldPage
                     .openPage();
         });
-
+sleep(5000);
         step("Переход на страницу Карьера", () -> {
             raketaWorldPage
                     .career();
