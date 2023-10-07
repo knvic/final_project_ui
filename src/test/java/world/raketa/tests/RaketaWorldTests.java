@@ -90,7 +90,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
             raketaWorldPage
                     .openPage();
         });
-sleep(5000);
+//sleep(5000);
         step("Проверка элементов выпадающего меню соотсетствию списка.", () -> {
         raketaWorldPage
                 .checkElementsPullDownMenu(list, count, item);
