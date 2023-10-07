@@ -23,6 +23,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
 public class RaketaWorldTests extends RaketaRemoteBaseTest {
+   // public class RaketaWorldTests extends RaketaBaseTest {
     RaketaWorldPage raketaWorldPage = new RaketaWorldPage();
     private static int count = 0;
 
