@@ -16,11 +16,13 @@ import world.raketa.util.RaketaBaseTest;
 import world.raketa.util.RaketaRemoteBaseTest;
 
 
+import java.time.Duration;
 import java.util.List;
 
 import java.util.stream.Stream;
 
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
@@ -90,7 +92,10 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
             raketaWorldPage
                     .openPage();
         });
-sleep(5000);
+         $$("[data-hook-content=covercontent]").first().shouldHave(text("Экономьте на командировках, улучшайте контроль по поездкам, " +
+                                                                                        "ускоряйте отчетность. Пришло время рассмотреть цифровую " +
+                                                                                         "платформу Ракета"), Duration.ofSeconds(10));
+//sleep(5000);
         step("Проверка элементов выпадающего меню соотсетствию списка.", () -> {
         raketaWorldPage
                 .checkElementsPullDownMenu(list, count, item);
