@@ -54,7 +54,9 @@ public class RaketaWorldPage {
 
 
     public RaketaWorldPage checkElementsPullDownMenu(List<String> list, int count, String first) {
-
+        $$("[data-hook-content=covercontent]").first().shouldHave(text("Экономьте на командировках, улучшайте контроль по поездкам, " +
+                "ускоряйте отчетность. Пришло время рассмотреть цифровую " +
+                "платформу Ракета"), Duration.ofSeconds(10));
 
         for (String item : list) {
            // System.out.println("itemmenu= " + item + "  count= " + count);

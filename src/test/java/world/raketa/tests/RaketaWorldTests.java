@@ -92,10 +92,8 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
             raketaWorldPage
                     .openPage();
         });
-         $$("[data-hook-content=covercontent]").first().shouldHave(text("Экономьте на командировках, улучшайте контроль по поездкам, " +
-                                                                                        "ускоряйте отчетность. Пришло время рассмотреть цифровую " +
-                                                                                         "платформу Ракета"), Duration.ofSeconds(10));
-//sleep(5000);
+
+
         step("Проверка элементов выпадающего меню соотсетствию списка.", () -> {
         raketaWorldPage
                 .checkElementsPullDownMenu(list, count, item);
