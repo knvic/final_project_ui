@@ -11,6 +11,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import world.raketa.pages.Locale;
 import world.raketa.pages.RaketaWorldPage;
 import world.raketa.utils.DataGenerationUtils;
+import world.raketa.utils.RaketaBaseTest;
 import world.raketa.utils.RaketaRemoteBaseTest;
 
 
@@ -22,7 +23,7 @@ import java.util.stream.Stream;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
-public class RaketaWorldTests extends RaketaRemoteBaseTest {
+public class RaketaWorldTests extends RaketaBaseTest {
     RaketaWorldPage raketaWorldPage = new RaketaWorldPage();
     DataGenerationUtils dataGenerationUtils = new DataGenerationUtils();
     String
@@ -121,7 +122,8 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
 
     @Tags({
             @Tag("raketa"),
-            @Tag("remote")
+            @Tag("remote"),
+            @Tag("local_test")
     })
     @Test
     void yoga() {
@@ -139,7 +141,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
                     .vacancyQA();
         });
 
-        //Selenide.closeWindow();
+
     }
 
     @Epic("Ракета")
@@ -161,7 +163,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
                     .yoga();
         });
 
-        // Selenide.closeWindow();
+
     }
 
     @Epic("Ракета")

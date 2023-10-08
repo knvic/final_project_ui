@@ -25,6 +25,7 @@ public class RaketaWorldPage {
             selectLocale = $(".box_lang"),
             vacancy = $("[href='https://job.raketa.world/page28587673.html']"),
             button = $("[href='#popup:form_ru']"),
+            m_navigation = $("[aria-label='Основная навигация']"),
             tabInput = $(".t702__wrapper"),
             fieldName = tabInput.$("[name=Name]"),
             fieldEmail = tabInput.$("[name=Email]"),
@@ -34,8 +35,8 @@ public class RaketaWorldPage {
             buttonSubmit = tabInput.$("[type=submit]");
 
 
-    //navigation = $("[aria-label='Основная навигация']");
-    ;
+
+
     ElementsCollection
             navigation = $$("[aria-label='Основная навигация']"),
             pullDown = $$(".t199__holder li"),
@@ -57,7 +58,7 @@ public class RaketaWorldPage {
     public RaketaWorldPage shouldHaveTargetMenu(List<String> list) {
         for (String item : list
         ) {
-            $("[aria-label='Основная навигация']").should(text(item));
+            m_navigation .should(text(item));
         }
         return this;
     }
@@ -65,21 +66,14 @@ public class RaketaWorldPage {
 
     public RaketaWorldPage checkElementsPullDownMenu(List<String> list, int count, String first) {
 
-
         for (String item : list) {
-            // System.out.println("itemmenu= " + item + "  count= " + count);
-            // $$(".t199__holder li").first().hover().shouldHave(text(item)).shouldBe(visible);
 
             if (count == 0) {
-               /* $$("[data-hook-content=covercontent]").first().shouldHave(text("Экономьте на командировках, улучшайте контроль по поездкам, " +
-                                                                                        "ускоряйте отчетность. Пришло время рассмотреть цифровую " +
-                                                                                         "платформу Ракета"), Duration.ofSeconds(10));*/
-                $$(".t199__holder li").first().hover().shouldHave(text(item)).shouldBe(visible, Duration.ofSeconds(10));
 
+                pullDown.first().hover().shouldHave(text(item)).shouldBe(visible, Duration.ofSeconds(10));
             } else {
 
-
-                $$(".t199__holder li").first().sibling(count - 1).shouldHave(text(first)).hover().shouldHave(text(item)).shouldBe(visible);
+                pullDown.first().sibling(count - 1).shouldHave(text(first)).hover().shouldHave(text(item)).shouldBe(visible);
 
             }
 
@@ -92,7 +86,7 @@ public class RaketaWorldPage {
     public RaketaWorldPage career() {
 
         $$("[data-hook-content=covercontent]").first().shouldHave(text("Экономьте на командировках, улучшайте контроль по поездкам, ускоряйте отчетность. Пришло время рассмотреть цифровую платформу Ракета"), Duration.ofSeconds(10));
-        $$(".t199__holder li").first().hover();
+        pullDown.first().hover();
         $$(".t-menusub").first().hover().shouldHave(text("Карьера")).shouldBe(visible, Duration.ofSeconds(10));
 
         $("[href='/career']").click();
@@ -102,7 +96,12 @@ public class RaketaWorldPage {
     public RaketaWorldPage vacancyQA() {
 
         $$(".t017").findBy(text("здесь")).scrollTo();
-        $("[href=\"https://job.raketa.world/page28587673.html\"]").shouldBe(enabled);
+        $("[href=\"https://job.raketa.world/page28587673.html\"]").shouldBe(enabled).click();
+
+        //$(".t396__filter").shouldBe(text("QA automation engineer")).scrollTo();
+      //  $("[href='https://project5743155.tilda.ws/page28588644.html']").shouldBe(enabled, Duration.ofSeconds(10)).click();
+        $$("[class='t396__elem tn-elem tn-elem__5234063101656055706376']").first().click();
+
 
         return this;
     }
@@ -163,7 +162,6 @@ public class RaketaWorldPage {
 
         return this;
     }
-
 
 
 }
