@@ -1,7 +1,5 @@
 package world.raketa.tests;
 
-import com.codeborne.selenide.Selenide;
-
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -12,23 +10,25 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import world.raketa.pages.Locale;
 import world.raketa.pages.RaketaWorldPage;
-import world.raketa.util.RaketaBaseTest;
-import world.raketa.util.RaketaRemoteBaseTest;
+import world.raketa.utils.DataGenerationUtils;
+import world.raketa.utils.RaketaRemoteBaseTest;
 
 
-import java.time.Duration;
 import java.util.List;
 
 import java.util.stream.Stream;
 
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
 public class RaketaWorldTests extends RaketaRemoteBaseTest {
-   //public class RaketaWorldTests extends RaketaBaseTest {
     RaketaWorldPage raketaWorldPage = new RaketaWorldPage();
+    DataGenerationUtils dataGenerationUtils = new DataGenerationUtils();
+    String
+            firstName = dataGenerationUtils.getFirstName(),
+            lastName = dataGenerationUtils.getLastName(),
+            userNumber = dataGenerationUtils.getUserNumber();
     private static int count = 0;
 
 
@@ -38,6 +38,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
                 Arguments.of(Locale.EN, List.of("COMPANY", "PRODUCTS", "FOR CLIENTS", "GET STARTED", "CONTACTS", "LOGIN"))
         );
     }
+
     @Epic("Ракета")
     @Feature("Первоначальное тестирование")
     @Story("Переключение локали")
@@ -76,6 +77,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
 
         );
     }
+
     @Epic("Ракета")
     @Feature("Первоначальное тестирование")
     @Story("Соответствие путктов меню")
@@ -93,10 +95,14 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
                     .openPage();
         });
 
+        step("Ожидаем корректной загрузки стартовой страницы (появление определенного текста) ", () -> {
+            raketaWorldPage
+                    .waitingForTheSiteToLoad();
+        });
 
         step("Проверка элементов выпадающего меню соотсетствию списка.", () -> {
-        raketaWorldPage
-                .checkElementsPullDownMenu(list, count, item);
+            raketaWorldPage
+                    .checkElementsPullDownMenu(list, count, item);
         });
         count++;
 
@@ -155,7 +161,61 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
                     .yoga();
         });
 
-       // Selenide.closeWindow();
+        // Selenide.closeWindow();
+    }
+
+    @Epic("Ракета")
+    @Feature("Первоначальное тестирование")
+    @Story("")
+    @Owner("krivorotovnv")
+    @Severity(SeverityLevel.BLOCKER)
+    @Link(value = "Testing", url = "https://raketa.world")
+    @DisplayName("Проверка выбора меню КОПМАНИЯ, вызова окна для ввода данных для связи, возможности ввода данных.")
+    @Tags({
+            @Tag("raketa"),
+            @Tag("remote")
+    })
+    @Test
+    void form() {
+        step("Открытие сайта", () -> {
+            raketaWorldPage
+                    .openPage();
+        });
+        step("Ожидаем корректной загрузки стартовой страницы (появление определенного текста) ", () -> {
+            raketaWorldPage
+                    .waitingForTheSiteToLoad();
+        });
+
+        step("Находим пункт меню КОМПАНИЯ и кликаем на него", () -> {
+            raketaWorldPage
+                    .goToTheMenuItemCompany();
+        });
+        step("Ожидаем корректной загрузки страницы Компания и наличия в нем определенного текста ", () -> {
+            raketaWorldPage
+                    .waitingForTheSiteCompanyToLoad();
+        });
+
+        step("Нажимаем на кнопку вызова окна ввода данных ля связи ", () -> {
+            raketaWorldPage
+                    .callingInpitTab();
+        });
+
+        step("Проверяем загрузку и видимость окна", () -> {
+            raketaWorldPage
+                    .checkVisibleInpitTab();
+        });
+
+        step("Заполняем поля формы. Поле email вводим не правильно, чтобы форма не отправлялась и жмем отправить", () -> {
+            raketaWorldPage
+                    .fillingTheForm(firstName + " " + lastName, "Не правильный емайл", userNumber, "Тест");
+        });
+
+        step("Так как заполнено не корректно, проверяем, что форма видна ", () -> {
+            raketaWorldPage
+                    .checkVisibleInpitTab();
+        });
+
+
     }
 
 }

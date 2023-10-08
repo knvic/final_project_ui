@@ -21,16 +21,26 @@ public class RaketaWorldPage {
 
 
     SelenideElement
-            company = $(".t199__holder"),
+            topMenu = $(".t199__holder"),
             selectLocale = $(".box_lang"),
-            vacancy = $("[href='https://job.raketa.world/page28587673.html']");
+            vacancy = $("[href='https://job.raketa.world/page28587673.html']"),
+            button = $("[href='#popup:form_ru']"),
+            tabInput = $(".t702__wrapper"),
+            fieldName = tabInput.$("[name=Name]"),
+            fieldEmail = tabInput.$("[name=Email]"),
+            fildPhone = tabInput.$("[name=Phone]"),
+            fildInput = tabInput.$("[name=Input]"),
+            fieldCheckBox = tabInput.$(".t-checkbox__indicator"),
+            buttonSubmit = tabInput.$("[type=submit]");
+
 
     //navigation = $("[aria-label='Основная навигация']");
     ;
     ElementsCollection
             navigation = $$("[aria-label='Основная навигация']"),
-            pullDown = $$(".t199__holder li");
-
+            pullDown = $$(".t199__holder li"),
+            pageElements = $$("[data-hook-content=covercontent]"),
+            fieldText = $$("div [field=text]");
 
 
     public RaketaWorldPage openPage() {
@@ -54,19 +64,17 @@ public class RaketaWorldPage {
 
 
     public RaketaWorldPage checkElementsPullDownMenu(List<String> list, int count, String first) {
-        $$("[data-hook-content=covercontent]").first().shouldHave(text("Экономьте на командировках, улучшайте контроль по поездкам, " +
-                "ускоряйте отчетность. Пришло время рассмотреть цифровую " +
-                "платформу Ракета"), Duration.ofSeconds(10));
+
 
         for (String item : list) {
-           // System.out.println("itemmenu= " + item + "  count= " + count);
+            // System.out.println("itemmenu= " + item + "  count= " + count);
             // $$(".t199__holder li").first().hover().shouldHave(text(item)).shouldBe(visible);
 
             if (count == 0) {
                /* $$("[data-hook-content=covercontent]").first().shouldHave(text("Экономьте на командировках, улучшайте контроль по поездкам, " +
                                                                                         "ускоряйте отчетность. Пришло время рассмотреть цифровую " +
                                                                                          "платформу Ракета"), Duration.ofSeconds(10));*/
-                $$(".t199__holder li").first().hover().shouldHave(text(item)).shouldBe(visible,Duration.ofSeconds(10));
+                $$(".t199__holder li").first().hover().shouldHave(text(item)).shouldBe(visible, Duration.ofSeconds(10));
 
             } else {
 
@@ -82,12 +90,12 @@ public class RaketaWorldPage {
 
 
     public RaketaWorldPage career() {
-       // pullDown.first().hover().findBy(text("123")).click();
+
         $$("[data-hook-content=covercontent]").first().shouldHave(text("Экономьте на командировках, улучшайте контроль по поездкам, ускоряйте отчетность. Пришло время рассмотреть цифровую платформу Ракета"), Duration.ofSeconds(10));
         $$(".t199__holder li").first().hover();
         $$(".t-menusub").first().hover().shouldHave(text("Карьера")).shouldBe(visible, Duration.ofSeconds(10));
 
-       $("[href='/career']").click();
+        $("[href='/career']").click();
         return this;
     }
 
@@ -106,5 +114,56 @@ public class RaketaWorldPage {
 
         return this;
     }
+
+
+    public RaketaWorldPage waitingForTheSiteToLoad() {
+        pageElements.first().shouldHave(text("Экономьте на командировках, улучшайте контроль по поездкам, " +
+                "ускоряйте отчетность. Пришло время рассмотреть цифровую " +
+                "платформу Ракета"), Duration.ofSeconds(10));
+
+        return this;
+    }
+
+    public RaketaWorldPage goToTheMenuItemCompany() {
+        topMenu.find(byText("Компания")).click();
+
+        return this;
+    }
+
+    public RaketaWorldPage waitingForTheSiteCompanyToLoad() {
+
+        fieldText.first().shouldHave(text("Компания Ракета – российский разработчик"));
+
+        return this;
+    }
+
+    public RaketaWorldPage callingInpitTab() {
+
+        button.scrollTo().click();
+
+        return this;
+    }
+
+
+    public RaketaWorldPage checkVisibleInpitTab() {
+
+        tabInput.shouldBe(visible, Duration.ofSeconds(10));
+
+        return this;
+    }
+
+    public RaketaWorldPage fillingTheForm(String name, String email, String phone, String input) {
+
+        fieldName.setValue(name);
+        fieldEmail.setValue(email);
+        fildPhone.setValue(phone);
+        fildInput.setValue(input);
+        fieldCheckBox.scrollTo().click();
+        buttonSubmit.click();
+
+        return this;
+    }
+
+
 
 }

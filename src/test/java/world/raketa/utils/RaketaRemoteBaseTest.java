@@ -1,4 +1,4 @@
-package world.raketa.util;
+package world.raketa.utils;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
