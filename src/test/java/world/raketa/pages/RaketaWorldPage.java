@@ -61,10 +61,13 @@ public class RaketaWorldPage {
             // $$(".t199__holder li").first().hover().shouldHave(text(item)).shouldBe(visible);
 
             if (count == 0) {
-
+               /* $$("[data-hook-content=covercontent]").first().shouldHave(text("Экономьте на командировках, улучшайте контроль по поездкам, " +
+                                                                                        "ускоряйте отчетность. Пришло время рассмотреть цифровую " +
+                                                                                         "платформу Ракета"), Duration.ofSeconds(10));*/
                 $$(".t199__holder li").first().hover().shouldHave(text(item)).shouldBe(visible,Duration.ofSeconds(10));
 
             } else {
+
 
                 $$(".t199__holder li").first().sibling(count - 1).shouldHave(text(first)).hover().shouldHave(text(item)).shouldBe(visible);
 
