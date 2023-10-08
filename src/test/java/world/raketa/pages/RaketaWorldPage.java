@@ -1,12 +1,14 @@
 package world.raketa.pages;
 
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import static com.codeborne.selenide.CollectionCondition.texts;
@@ -16,6 +18,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withTagAndText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class RaketaWorldPage {
 
@@ -97,10 +100,49 @@ public class RaketaWorldPage {
 
         $$(".t017").findBy(text("здесь")).scrollTo();
         $("[href=\"https://job.raketa.world/page28587673.html\"]").shouldBe(enabled).click();
+sleep(5000);
 
+        Set<String> windowHandles = getWebDriver().getWindowHandles();
+
+// Перебираем все открытые окна и выводим их идентификаторы
+        /*for (String windowHandle : windowHandles) {
+            System.out.println("Window handle: " + windowHandle);
+            Selenide.switchTo().window(windowHandle);
+            sleep(6000);
+        }*/
+        Selenide.switchTo().window("A939C457AE1A3342600F7B5B90F30BB1");
+        //A939C457AE1A3342600F7B5B90F30BB1
+
+        sleep(5000);
         //$(".t396__filter").shouldBe(text("QA automation engineer")).scrollTo();
-      //  $("[href='https://project5743155.tilda.ws/page28588644.html']").shouldBe(enabled, Duration.ofSeconds(10)).click();
-        $$("[class='t396__elem tn-elem tn-elem__5234063101656055706376']").first().click();
+        //$("[href='https://project5743155.tilda.ws/page28588644.html']").shouldBe(enabled, Duration.ofSeconds(10)).click();
+        //$$("[class='t396__elem tn-elem tn-elem__5234063101656055706376']").first().click();
+          $("#rec523406310").click();
+
+
+       /* $$("[data-elem-id=1656051720688]");
+
+        href="https://job.raketa.world/qaautomation"
+
+        t396
+
+
+        $$(".t396");
+
+        t396__filter
+        $(".t396__carrier");
+        $(".t396__filter");
+
+        href="https://job.raketa.world/qaautomation
+        href="http://project5743155.tilda.ws/page28588644.html
+
+
+        $$("[data-elem-id="1669468041002"]");
+
+        class="t396__elem tn-elem tn-elem__5234063101656055706376"
+
+        $$("[class='t396__elem tn-elem tn-elem__5234063101656055706376']");*/
+
 
 
         return this;
