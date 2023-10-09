@@ -107,14 +107,13 @@ public class RaketaWorldTests extends RaketaBaseTest {
         });
         count++;
 
-        //Selenide.closeWindow();
-        // Selenide.refresh();
+
     }
 
 
     @Epic("Ракета")
     @Feature("Первоначальное тестирование")
-    @Story("Проверка наличия ссылки на страницу вакансий")
+    @Story("Проверка наличия вакансии QA automation engineer")
     @Owner("krivorotovnv")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "Testing", url = "https://raketa.world")
@@ -136,13 +135,24 @@ public class RaketaWorldTests extends RaketaBaseTest {
                     .waitingForTheSiteToLoad();
         });
 
-        step("Переход на страницу Карьера", () -> {
+        step("первый пункт основного меню. В выпадаюзм списке находим Карьера, проверяем видимость и выбираем", () -> {
             raketaWorldPage
                     .career();
         });
+        step("Ожидаем корректной загрузки страницы Карьера (появление определенного текста) ", () -> {
+            raketaWorldPage
+                    .waitingForThePageCareerLoad();
+        });
+
         step("Проверка наличия ссылки на вакансии", () -> {
             raketaWorldPage
                     .vacancyQA();
+        });
+
+
+        step("Проверка наличия ссылки на вакансии QA automation engineer);", () -> {
+            raketaWorldPage
+                    .vacancyQA1();
         });
 
 

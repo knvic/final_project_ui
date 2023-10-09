@@ -18,4 +18,5 @@ public class RaketaBaseTest {
         Configuration.holdBrowserOpen=true;
     }
 
+
 }

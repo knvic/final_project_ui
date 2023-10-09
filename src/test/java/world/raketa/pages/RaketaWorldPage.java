@@ -4,21 +4,16 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Stream;
 
 import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selectors.withTagAndText;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class RaketaWorldPage {
@@ -36,16 +31,18 @@ public class RaketaWorldPage {
             fildPhone = tabInput.$("[name=Phone]"),
             fildInput = tabInput.$("[name=Input]"),
             fieldCheckBox = tabInput.$(".t-checkbox__indicator"),
-            buttonSubmit = tabInput.$("[type=submit]");
-
-
+            buttonSubmit = tabInput.$("[type=submit]"),
+            linkToThePageCareer = $("[href='/career']"),
+            linkToThePageVacancy = $("[href=\"https://job.raketa.world/page28587673.html\"]");
 
 
     ElementsCollection
             navigation = $$("[aria-label='Основная навигация']"),
-            pullDown = $$(".t199__holder li"),
-            pageElements = $$("[data-hook-content=covercontent]"),
-            fieldText = $$("div [field=text]");
+            pullDownElement = $$(".t199__holder li"),
+            loadingAreaMainPage = $$("[data-hook-content=covercontent]"),
+            fieldText = $$("div [field=text]"),
+            listPullDownMenu = $$(".t-menusub"),
+            loadingAreaPageCareer = $$("[class='t-card__col t-card__col_withoutbtn']");
 
 
     public RaketaWorldPage openPage() {
@@ -62,7 +59,7 @@ public class RaketaWorldPage {
     public RaketaWorldPage shouldHaveTargetMenu(List<String> list) {
         for (String item : list
         ) {
-            m_navigation .should(text(item));
+            m_navigation.should(text(item));
         }
         return this;
     }
@@ -74,10 +71,10 @@ public class RaketaWorldPage {
 
             if (count == 0) {
 
-                pullDown.first().hover().shouldHave(text(item)).shouldBe(visible, Duration.ofSeconds(10));
+                pullDownElement.first().hover().shouldHave(text(item)).shouldBe(visible, Duration.ofSeconds(10));
             } else {
 
-                pullDown.first().sibling(count - 1).shouldHave(text(first)).hover().shouldHave(text(item)).shouldBe(visible);
+                pullDownElement.first().sibling(count - 1).shouldHave(text(first)).hover().shouldHave(text(item)).shouldBe(visible);
 
             }
 
@@ -89,37 +86,49 @@ public class RaketaWorldPage {
 
     public RaketaWorldPage career() {
 
-        $$("[data-hook-content=covercontent]").first().shouldHave(text("Экономьте на командировках, улучшайте контроль по поездкам, ускоряйте отчетность. Пришло время рассмотреть цифровую платформу Ракета"), Duration.ofSeconds(10));
-        pullDown.first().hover();
-        $$(".t-menusub").first().hover().shouldHave(text("Карьера")).shouldBe(visible, Duration.ofSeconds(10));
 
-        $("[href='/career']").click();
+        pullDownElement.first().hover();
+        listPullDownMenu.first().hover().shouldHave(text("Карьера")).shouldBe(visible, Duration.ofSeconds(10));
+
+        linkToThePageCareer.click();
         return this;
     }
 
+
+    public RaketaWorldPage waitingForThePageCareerLoad() {
+
+        loadingAreaPageCareer.findBy(text("Еще мы совместно участвуем в экологических проектах, занимаемся йогой и совершенствуем английский язык.")).shouldBe(visible, Duration.ofSeconds(10)).scrollTo();
+
+        return this;
+    }
+
+
     public RaketaWorldPage vacancyQA() {
 
-        $$("[class='t-card__col t-card__col_withoutbtn']").findBy(text("Еще мы совместно участвуем в экологических проектах, занимаемся йогой и совершенствуем английский язык.")).shouldBe(visible, Duration.ofSeconds(10)).scrollTo();
 
-        //$$(".t017").findBy(text("здесь")).scrollTo();
-        $("[href=\"https://job.raketa.world/page28587673.html\"]").shouldBe(enabled).click();
-//sleep(5000);
+        linkToThePageVacancy.shouldBe(enabled).click();
+        return this;
+    }
+
+
+
+    public RaketaWorldPage vacancyQA1() {
 
 
         Set<String> windowHandles = getWebDriver().getWindowHandles();
 
-// Перебираем все открытые окна и выводим их идентификаторы
-        int c=1;
-        String win1=null;
-        String win2=null;
+
+        int c = 1;
+        String win1 = null;
+        String win2 = null;
         for (String windowHandle : windowHandles) {
             System.out.println("Window handle: " + windowHandle);
-if(c==1){
-    win1=windowHandle;
-}else{
-    win2=windowHandle;
-}
-c++;
+            if (c == 1) {
+                win1 = windowHandle;
+            } else {
+                win2 = windowHandle;
+            }
+            c++;
 
         }
 
@@ -129,14 +138,14 @@ c++;
         Selenide.switchTo().window(win2);
 
 
-
-
-       String win0= WebDriverRunner.getWebDriver().getWindowHandle();
+        String win0 = WebDriverRunner.getWebDriver().getWindowHandle();
         System.out.println("Current win = : " + win0);
-        if(!WebDriverRunner.getWebDriver().getWindowHandle().equals(win2)) {
+        if (!WebDriverRunner.getWebDriver().getWindowHandle().equals(win2)) {
             Selenide.switchTo().window(win2);
+            $("#rec523406310").shouldHave(text("QA automation engineerff"));
             $("#rec523406310").click();
-        }else {
+        } else {
+            $("#rec523406310").shouldHave(text("QA automation engineerff"));
             $("#rec523406310").click();
         }
        /* $$("[data-elem-id=1656051720688]");
@@ -165,7 +174,6 @@ class="t841__container t-card__container t-container"
         $$("[class='t396__elem tn-elem tn-elem__5234063101656055706376']");*/
 
 
-
         return this;
     }
 
@@ -179,7 +187,7 @@ class="t841__container t-card__container t-container"
 
 
     public RaketaWorldPage waitingForTheSiteToLoad() {
-        pageElements.first().shouldHave(text("Экономьте на командировках, улучшайте контроль по поездкам, " +
+        loadingAreaMainPage.first().shouldHave(text("Экономьте на командировках, улучшайте контроль по поездкам, " +
                 "ускоряйте отчетность. Пришло время рассмотреть цифровую " +
                 "платформу Ракета"), Duration.ofSeconds(10));
 
