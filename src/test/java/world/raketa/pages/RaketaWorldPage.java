@@ -3,6 +3,7 @@ package world.raketa.pages;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 
@@ -98,40 +99,60 @@ public class RaketaWorldPage {
 
     public RaketaWorldPage vacancyQA() {
 
-        $$(".t017").findBy(text("здесь")).scrollTo();
+        $$("[class='t-card__col t-card__col_withoutbtn']").findBy(text("Еще мы совместно участвуем в экологических проектах, занимаемся йогой и совершенствуем английский язык.")).shouldBe(visible, Duration.ofSeconds(10)).scrollTo();
+
+        //$$(".t017").findBy(text("здесь")).scrollTo();
         $("[href=\"https://job.raketa.world/page28587673.html\"]").shouldBe(enabled).click();
-sleep(5000);
+//sleep(5000);
+
 
         Set<String> windowHandles = getWebDriver().getWindowHandles();
 
 // Перебираем все открытые окна и выводим их идентификаторы
-        /*for (String windowHandle : windowHandles) {
+        int c=1;
+        String win1=null;
+        String win2=null;
+        for (String windowHandle : windowHandles) {
             System.out.println("Window handle: " + windowHandle);
-            Selenide.switchTo().window(windowHandle);
-            sleep(6000);
-        }*/
-        Selenide.switchTo().window("A939C457AE1A3342600F7B5B90F30BB1");
-        //A939C457AE1A3342600F7B5B90F30BB1
+if(c==1){
+    win1=windowHandle;
+}else{
+    win2=windowHandle;
+}
+c++;
 
-        sleep(5000);
-        //$(".t396__filter").shouldBe(text("QA automation engineer")).scrollTo();
-        //$("[href='https://project5743155.tilda.ws/page28588644.html']").shouldBe(enabled, Duration.ofSeconds(10)).click();
-        //$$("[class='t396__elem tn-elem tn-elem__5234063101656055706376']").first().click();
-          $("#rec523406310").click();
+        }
+
+        System.out.println("Window 1 handle: " + win1);
+        System.out.println("Window 2 handle: " + win2);
+        switchTo().window(win1).close();
+        Selenide.switchTo().window(win2);
 
 
+
+
+       String win0= WebDriverRunner.getWebDriver().getWindowHandle();
+        System.out.println("Current win = : " + win0);
+        if(!WebDriverRunner.getWebDriver().getWindowHandle().equals(win2)) {
+            Selenide.switchTo().window(win2);
+            $("#rec523406310").click();
+        }else {
+            $("#rec523406310").click();
+        }
        /* $$("[data-elem-id=1656051720688]");
 
         href="https://job.raketa.world/qaautomation"
 
         t396
-
-
+ $$("[class='t841__container t-card__container t-container']");
+class="t841__container t-card__container t-container"
         $$(".t396");
 
         t396__filter
         $(".t396__carrier");
         $(".t396__filter");
+         $(".t-card__col t-card__col_withoutbtn");
+        t-card__col t-card__col_withoutbtn
 
         href="https://job.raketa.world/qaautomation
         href="http://project5743155.tilda.ws/page28588644.html

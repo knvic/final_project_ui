@@ -131,6 +131,10 @@ public class RaketaWorldTests extends RaketaBaseTest {
             raketaWorldPage
                     .openPage();
         });
+        step("Ожидаем корректной загрузки стартовой страницы (появление определенного текста) ", () -> {
+            raketaWorldPage
+                    .waitingForTheSiteToLoad();
+        });
 
         step("Переход на страницу Карьера", () -> {
             raketaWorldPage
