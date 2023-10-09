@@ -1,12 +1,14 @@
 package world.raketa.pages;
 
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import static com.codeborne.selenide.CollectionCondition.texts;
@@ -16,21 +18,33 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withTagAndText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class RaketaWorldPage {
 
 
     SelenideElement
-            company = $(".t199__holder"),
+            topMenu = $(".t199__holder"),
             selectLocale = $(".box_lang"),
-            vacancy = $("[href='https://job.raketa.world/page28587673.html']");
+            vacancy = $("[href='https://job.raketa.world/page28587673.html']"),
+            button = $("[href='#popup:form_ru']"),
+            m_navigation = $("[aria-label='Основная навигация']"),
+            tabInput = $(".t702__wrapper"),
+            fieldName = tabInput.$("[name=Name]"),
+            fieldEmail = tabInput.$("[name=Email]"),
+            fildPhone = tabInput.$("[name=Phone]"),
+            fildInput = tabInput.$("[name=Input]"),
+            fieldCheckBox = tabInput.$(".t-checkbox__indicator"),
+            buttonSubmit = tabInput.$("[type=submit]");
 
-    //navigation = $("[aria-label='Основная навигация']");
-    ;
+
+
+
     ElementsCollection
             navigation = $$("[aria-label='Основная навигация']"),
-            pullDown = $$(".t199__holder li");
-
+            pullDown = $$(".t199__holder li"),
+            pageElements = $$("[data-hook-content=covercontent]"),
+            fieldText = $$("div [field=text]");
 
 
     public RaketaWorldPage openPage() {
@@ -47,7 +61,7 @@ public class RaketaWorldPage {
     public RaketaWorldPage shouldHaveTargetMenu(List<String> list) {
         for (String item : list
         ) {
-            $("[aria-label='Основная навигация']").should(text(item));
+            m_navigation .should(text(item));
         }
         return this;
     }
@@ -55,18 +69,14 @@ public class RaketaWorldPage {
 
     public RaketaWorldPage checkElementsPullDownMenu(List<String> list, int count, String first) {
 
-
         for (String item : list) {
-            System.out.println("itemmenu= " + item + "  count= " + count);
-            // $$(".t199__holder li").first().hover().shouldHave(text(item)).shouldBe(visible);
 
             if (count == 0) {
 
-                $$(".t199__holder li").first().hover().shouldHave(text(item)).shouldBe(visible);
-
+                pullDown.first().hover().shouldHave(text(item)).shouldBe(visible, Duration.ofSeconds(10));
             } else {
 
-                $$(".t199__holder li").first().sibling(count - 1).shouldHave(text(first)).hover().shouldHave(text(item)).shouldBe(visible);
+                pullDown.first().sibling(count - 1).shouldHave(text(first)).hover().shouldHave(text(item)).shouldBe(visible);
 
             }
 
@@ -77,16 +87,63 @@ public class RaketaWorldPage {
 
 
     public RaketaWorldPage career() {
-       // pullDown.first().hover().findBy(text("123")).click();
-        $$(".t199__holder li").first().hover().shouldHave(text("Карьера")).shouldBe(visible);
-       $("[href='/career']").click();
+
+        $$("[data-hook-content=covercontent]").first().shouldHave(text("Экономьте на командировках, улучшайте контроль по поездкам, ускоряйте отчетность. Пришло время рассмотреть цифровую платформу Ракета"), Duration.ofSeconds(10));
+        pullDown.first().hover();
+        $$(".t-menusub").first().hover().shouldHave(text("Карьера")).shouldBe(visible, Duration.ofSeconds(10));
+
+        $("[href='/career']").click();
         return this;
     }
 
     public RaketaWorldPage vacancyQA() {
 
         $$(".t017").findBy(text("здесь")).scrollTo();
-        $("[href=\"https://job.raketa.world/page28587673.html\"]").shouldBe(enabled);
+        $("[href=\"https://job.raketa.world/page28587673.html\"]").shouldBe(enabled).click();
+sleep(5000);
+
+        Set<String> windowHandles = getWebDriver().getWindowHandles();
+
+// Перебираем все открытые окна и выводим их идентификаторы
+        /*for (String windowHandle : windowHandles) {
+            System.out.println("Window handle: " + windowHandle);
+            Selenide.switchTo().window(windowHandle);
+            sleep(6000);
+        }*/
+        Selenide.switchTo().window("A939C457AE1A3342600F7B5B90F30BB1");
+        //A939C457AE1A3342600F7B5B90F30BB1
+
+        sleep(5000);
+        //$(".t396__filter").shouldBe(text("QA automation engineer")).scrollTo();
+        //$("[href='https://project5743155.tilda.ws/page28588644.html']").shouldBe(enabled, Duration.ofSeconds(10)).click();
+        //$$("[class='t396__elem tn-elem tn-elem__5234063101656055706376']").first().click();
+          $("#rec523406310").click();
+
+
+       /* $$("[data-elem-id=1656051720688]");
+
+        href="https://job.raketa.world/qaautomation"
+
+        t396
+
+
+        $$(".t396");
+
+        t396__filter
+        $(".t396__carrier");
+        $(".t396__filter");
+
+        href="https://job.raketa.world/qaautomation
+        href="http://project5743155.tilda.ws/page28588644.html
+
+
+        $$("[data-elem-id="1669468041002"]");
+
+        class="t396__elem tn-elem tn-elem__5234063101656055706376"
+
+        $$("[class='t396__elem tn-elem tn-elem__5234063101656055706376']");*/
+
+
 
         return this;
     }
@@ -98,5 +155,55 @@ public class RaketaWorldPage {
 
         return this;
     }
+
+
+    public RaketaWorldPage waitingForTheSiteToLoad() {
+        pageElements.first().shouldHave(text("Экономьте на командировках, улучшайте контроль по поездкам, " +
+                "ускоряйте отчетность. Пришло время рассмотреть цифровую " +
+                "платформу Ракета"), Duration.ofSeconds(10));
+
+        return this;
+    }
+
+    public RaketaWorldPage goToTheMenuItemCompany() {
+        topMenu.find(byText("Компания")).click();
+
+        return this;
+    }
+
+    public RaketaWorldPage waitingForTheSiteCompanyToLoad() {
+
+        fieldText.first().shouldHave(text("Компания Ракета – российский разработчик"));
+
+        return this;
+    }
+
+    public RaketaWorldPage callingInpitTab() {
+
+        button.scrollTo().click();
+
+        return this;
+    }
+
+
+    public RaketaWorldPage checkVisibleInpitTab() {
+
+        tabInput.shouldBe(visible, Duration.ofSeconds(10));
+
+        return this;
+    }
+
+    public RaketaWorldPage fillingTheForm(String name, String email, String phone, String input) {
+
+        fieldName.setValue(name);
+        fieldEmail.setValue(email);
+        fildPhone.setValue(phone);
+        fildInput.setValue(input);
+        fieldCheckBox.scrollTo().click();
+        buttonSubmit.click();
+
+        return this;
+    }
+
 
 }

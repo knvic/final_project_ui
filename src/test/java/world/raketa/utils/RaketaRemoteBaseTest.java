@@ -1,31 +1,32 @@
-package world.raketa.tests;
+package world.raketa.utils;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import world.raketa.helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import world.raketa.helpers.Attach;
 
 import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class RemoteBaseTest {
+public class RaketaRemoteBaseTest {
 
 
     @BeforeAll
     static void beforeAll() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = System.getProperty("browserRes");
-        Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.browserVersion = System.getProperty("browserVersion");
-
-
-
+       // SelenideLogger.addListener("Allure", new AllureSelenide());
+        System.setProperty("selenide.browser", "Chrome");
+        Configuration.baseUrl = "https://www.raketa.world";
+        Configuration.browserSize = "1920x1800";
         Configuration.pageLoadStrategy = "eager";
+       // Configuration.browser = "chrome";
+      //  Configuration.holdBrowserOpen=true;
+
+
         Configuration.remote = "https://user1:1234@"+System.getProperty("selenoidUI", "selenoid.autotests.cloud")+"/wd/hub";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
@@ -50,5 +51,7 @@ public class RemoteBaseTest {
 
         closeWebDriver();
     }
+
+
 
 }

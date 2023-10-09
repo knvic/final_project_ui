@@ -44,7 +44,10 @@ dependencies {
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.10.0'
     testImplementation('org.junit.jupiter:junit-jupiter-params:5.9.2')
 
-    //implementation group: 'net.datafaker', name: 'datafaker', version: '1.0.2'
+   // implementation group: 'net.datafaker', name: 'datafaker', version: '1.0.2'
+  //  implementation group: 'net.datafaker', name: 'datafaker', version: '2.0.1'
+    //implementation group: 'net.datafaker', name: 'datafaker', version: '1.9.0'
+
 
 }
 
@@ -67,9 +70,15 @@ task run_raketa(type: Test) {
         includeTags("raketa")
     }
 }
-task run_jenkins_remote_param(type: Test) {
+task run_smoke(type: Test) {
     useJUnitPlatform {
         includeTags("remote")
+    }
+}
+
+task run_local_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("local_test")
     }
 }
 

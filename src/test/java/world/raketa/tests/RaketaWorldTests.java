@@ -1,16 +1,18 @@
 package world.raketa.tests;
 
-import com.codeborne.selenide.Selenide;
-
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import world.raketa.pages.Locale;
 import world.raketa.pages.RaketaWorldPage;
+import world.raketa.utils.DataGenerationUtils;
+import world.raketa.utils.RaketaBaseTest;
+import world.raketa.utils.RaketaRemoteBaseTest;
 
 
 import java.util.List;
@@ -23,6 +25,11 @@ import static io.qameta.allure.Allure.step;
 
 public class RaketaWorldTests extends RaketaBaseTest {
     RaketaWorldPage raketaWorldPage = new RaketaWorldPage();
+    DataGenerationUtils dataGenerationUtils = new DataGenerationUtils();
+    String
+            firstName = dataGenerationUtils.getFirstName(),
+            lastName = dataGenerationUtils.getLastName(),
+            userNumber = dataGenerationUtils.getUserNumber();
     private static int count = 0;
 
 
@@ -32,6 +39,7 @@ public class RaketaWorldTests extends RaketaBaseTest {
                 Arguments.of(Locale.EN, List.of("COMPANY", "PRODUCTS", "FOR CLIENTS", "GET STARTED", "CONTACTS", "LOGIN"))
         );
     }
+
     @Epic("Ракета")
     @Feature("Первоначальное тестирование")
     @Story("Переключение локали")
@@ -58,7 +66,7 @@ public class RaketaWorldTests extends RaketaBaseTest {
             raketaWorldPage
                     .shouldHaveTargetMenu(list);
         });
-        Selenide.closeWindow();
+        //Selenide.closeWindow();
 
     }
 
@@ -70,6 +78,7 @@ public class RaketaWorldTests extends RaketaBaseTest {
 
         );
     }
+
     @Epic("Ракета")
     @Feature("Первоначальное тестирование")
     @Story("Соответствие путктов меню")
@@ -79,20 +88,26 @@ public class RaketaWorldTests extends RaketaBaseTest {
     @DisplayName("Параметризованный тест проверки списка элементов выпадаюзешл меню при наведении на элементы основного меню.")
     @MethodSource("parameterize2")
     @Tag("raketa")
+
     @ParameterizedTest(name = "Проверка наличия выпадающего списка элементов. при наведениина пункт меню  {0} отображается элементы списка {1}")
     void parameterize2(String item, List<String> list) {
         step("Открытие сайта", () -> {
             raketaWorldPage
                     .openPage();
         });
-        sleep(2000);
+
+        step("Ожидаем корректной загрузки стартовой страницы (появление определенного текста) ", () -> {
+            raketaWorldPage
+                    .waitingForTheSiteToLoad();
+        });
+
         step("Проверка элементов выпадающего меню соотсетствию списка.", () -> {
-        raketaWorldPage
-                .checkElementsPullDownMenu(list, count, item);
+            raketaWorldPage
+                    .checkElementsPullDownMenu(list, count, item);
         });
         count++;
 
-        Selenide.closeWindow();
+        //Selenide.closeWindow();
         // Selenide.refresh();
     }
 
@@ -103,8 +118,13 @@ public class RaketaWorldTests extends RaketaBaseTest {
     @Owner("krivorotovnv")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "Testing", url = "https://raketa.world")
-    @DisplayName("Тест проверки ссылки на страницу вакансий со страницы карьера..")
-    @Tag("raketa")
+    @DisplayName("career Тест проверки ссылки на страницу вакансий со страницы карьера..")
+
+    @Tags({
+            @Tag("raketa"),
+            @Tag("remote"),
+            @Tag("local_test")
+    })
     @Test
     void yoga() {
         step("Открытие сайта", () -> {
@@ -121,7 +141,7 @@ public class RaketaWorldTests extends RaketaBaseTest {
                     .vacancyQA();
         });
 
-        Selenide.closeWindow();
+
     }
 
     @Epic("Ракета")
@@ -143,7 +163,61 @@ public class RaketaWorldTests extends RaketaBaseTest {
                     .yoga();
         });
 
-        Selenide.closeWindow();
+
+    }
+
+    @Epic("Ракета")
+    @Feature("Первоначальное тестирование")
+    @Story("")
+    @Owner("krivorotovnv")
+    @Severity(SeverityLevel.BLOCKER)
+    @Link(value = "Testing", url = "https://raketa.world")
+    @DisplayName("Проверка выбора меню КОПМАНИЯ, вызова окна для ввода данных для связи, возможности ввода данных.")
+    @Tags({
+            @Tag("raketa"),
+            @Tag("remote")
+    })
+    @Test
+    void form() {
+        step("Открытие сайта", () -> {
+            raketaWorldPage
+                    .openPage();
+        });
+        step("Ожидаем корректной загрузки стартовой страницы (появление определенного текста) ", () -> {
+            raketaWorldPage
+                    .waitingForTheSiteToLoad();
+        });
+
+        step("Находим пункт меню КОМПАНИЯ и кликаем на него", () -> {
+            raketaWorldPage
+                    .goToTheMenuItemCompany();
+        });
+        step("Ожидаем корректной загрузки страницы Компания и наличия в нем определенного текста ", () -> {
+            raketaWorldPage
+                    .waitingForTheSiteCompanyToLoad();
+        });
+
+        step("Нажимаем на кнопку вызова окна ввода данных ля связи ", () -> {
+            raketaWorldPage
+                    .callingInpitTab();
+        });
+
+        step("Проверяем загрузку и видимость окна", () -> {
+            raketaWorldPage
+                    .checkVisibleInpitTab();
+        });
+
+        step("Заполняем поля формы. Поле email вводим не правильно, чтобы форма не отправлялась и жмем отправить", () -> {
+            raketaWorldPage
+                    .fillingTheForm(firstName + " " + lastName, "Не правильный емайл", userNumber, "Тест");
+        });
+
+        step("Так как заполнено не корректно, проверяем, что форма видна ", () -> {
+            raketaWorldPage
+                    .checkVisibleInpitTab();
+        });
+
+
     }
 
 }
