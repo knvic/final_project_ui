@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import world.raketa.pages.Locale;
 import world.raketa.pages.RaketaWorldPage;
 import world.raketa.utils.DataGenerationUtils;
@@ -23,7 +24,7 @@ import java.util.stream.Stream;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
-public class RaketaWorldTests extends RaketaBaseTest {
+public class RaketaWorldTests extends RaketaRemoteBaseTest {
     RaketaWorldPage raketaWorldPage = new RaketaWorldPage();
     DataGenerationUtils dataGenerationUtils = new DataGenerationUtils();
     String
@@ -66,7 +67,7 @@ public class RaketaWorldTests extends RaketaBaseTest {
             raketaWorldPage
                     .shouldHaveTargetMenu(list);
         });
-        //Selenide.closeWindow();
+
 
     }
 
@@ -78,7 +79,6 @@ public class RaketaWorldTests extends RaketaBaseTest {
 
         );
     }
-
     @Epic("Ракета")
     @Feature("Первоначальное тестирование")
     @Story("Соответствие путктов меню")
@@ -88,7 +88,6 @@ public class RaketaWorldTests extends RaketaBaseTest {
     @DisplayName("Параметризованный тест проверки списка элементов выпадаюзешл меню при наведении на элементы основного меню.")
     @MethodSource("parameterize2")
     @Tag("raketa")
-
     @ParameterizedTest(name = "Проверка наличия выпадающего списка элементов. при наведениина пункт меню  {0} отображается элементы списка {1}")
     void parameterize2(String item, List<String> list) {
         step("Открытие сайта", () -> {
@@ -110,22 +109,27 @@ public class RaketaWorldTests extends RaketaBaseTest {
 
     }
 
-
+    @ValueSource(
+            strings = {
+                    "QA automation engineer",
+                    "QA Lead"
+            }
+    )
     @Epic("Ракета")
     @Feature("Первоначальное тестирование")
-    @Story("Проверка наличия вакансии QA automation engineer")
+    @Story("Проверка наличия вакансий на странице вакансий")
     @Owner("krivorotovnv")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "Testing", url = "https://raketa.world")
-    @DisplayName("career Тест проверки ссылки на страницу вакансий со страницы карьера..")
+    @DisplayName("Тест проверки ссылки на страницу вакансий и вакансий на странице согласно списка")
 
     @Tags({
             @Tag("raketa"),
             @Tag("remote"),
-            @Tag("local_test")
+
     })
-    @Test
-    void yoga() {
+    @ParameterizedTest(name = "Проверка наличия вакансии  =>  {0}")
+    void availabilityLinkToVacanciesAndListVacancy(String vacancy) {
         step("Открытие сайта", () -> {
             raketaWorldPage
                     .openPage();
@@ -146,13 +150,17 @@ public class RaketaWorldTests extends RaketaBaseTest {
 
         step("Проверка наличия ссылки на вакансии", () -> {
             raketaWorldPage
-                    .vacancyQA();
+                    .linkVacancyEnabled();
         });
 
+        step("После оперехода по ссылке на страницу вакансии открывается новое окно, а фокус оствется на другом. Ищем windowHandle окон, закрываем не нужное. переходим на окнос вакансиями", () -> {
+            raketaWorldPage
+                    .selectTargetWindows();
+        });
 
         step("Проверка наличия ссылки на вакансии QA automation engineer);", () -> {
             raketaWorldPage
-                    .vacancyQA1();
+                    .findVacancy(vacancy);
         });
 
 
@@ -160,21 +168,21 @@ public class RaketaWorldTests extends RaketaBaseTest {
 
     @Epic("Ракета")
     @Feature("Первоначальное тестирование")
-    @Story("Проверка наличия главного условия в работе")
+    @Story("Проверка наличия главного условия в работе QA automation engineer")
     @Owner("krivorotovnv")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "Testing", url = "https://job.raketa.world/qaautomation")
     @DisplayName("Тестирование наличия опции Йога в обед в условиях работы")
     @Tag("raketa")
     @Test
-    void yoga1() {
+    void mainConditionOfWork() {
         step("Открытие сайта на странице карьера", () -> {
             open("https://job.raketa.world/qaautomation");
         });
 
-        step("Поиск коючевого слова Йога в обед в условиях работы", () -> {
+        step("Поиск ключевого условия Йога в обед в предложениях вакансии", () -> {
             raketaWorldPage
-                    .yoga();
+                    .yogaAtLunch();
         });
 
 
@@ -189,7 +197,8 @@ public class RaketaWorldTests extends RaketaBaseTest {
     @DisplayName("Проверка выбора меню КОПМАНИЯ, вызова окна для ввода данных для связи, возможности ввода данных.")
     @Tags({
             @Tag("raketa"),
-            @Tag("remote")
+            @Tag("remote"),
+            @Tag("local_test")
     })
     @Test
     void form() {
@@ -223,7 +232,7 @@ public class RaketaWorldTests extends RaketaBaseTest {
 
         step("Заполняем поля формы. Поле email вводим не правильно, чтобы форма не отправлялась и жмем отправить", () -> {
             raketaWorldPage
-                    .fillingTheForm(firstName + " " + lastName, "Не правильный емайл", userNumber, "Тест");
+                    .fillingTheForm("A", "D", "7", "Т");
         });
 
         step("Так как заполнено не корректно, проверяем, что форма видна ", () -> {

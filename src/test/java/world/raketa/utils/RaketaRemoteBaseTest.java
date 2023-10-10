@@ -18,16 +18,16 @@ public class RaketaRemoteBaseTest {
 
     @BeforeAll
     static void beforeAll() {
-       // SelenideLogger.addListener("Allure", new AllureSelenide());
+
         System.setProperty("selenide.browser", "Chrome");
         Configuration.baseUrl = "https://www.raketa.world";
         Configuration.browserSize = "1920x1800";
         Configuration.pageLoadStrategy = "eager";
-       // Configuration.browser = "chrome";
-      //  Configuration.holdBrowserOpen=true;
 
 
-        Configuration.remote = "https://user1:1234@"+System.getProperty("selenoidUI", "selenoid.autotests.cloud")+"/wd/hub";
+        //Configuration.remote = "https://user1:1234@"+System.getProperty("selenoidUI", "selenoid.autotests.cloud")+"/wd/hub";
+        Configuration.remote = "http://localhost:4444/wd/hub";
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
