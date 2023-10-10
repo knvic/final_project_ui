@@ -25,8 +25,8 @@ public class RaketaRemoteBaseTest {
         Configuration.pageLoadStrategy = "eager";
 
 
-        //Configuration.remote = "https://user1:1234@"+System.getProperty("selenoidUI", "selenoid.autotests.cloud")+"/wd/hub";
-        Configuration.remote = "http://localhost:4444/wd/hub";
+        Configuration.remote = "https://user1:1234@"+System.getProperty("selenoidUI", "selenoid.autotests.cloud")+"/wd/hub";
+        // Configuration.remote = "http://localhost:4444/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
