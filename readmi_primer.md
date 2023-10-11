@@ -110,7 +110,7 @@ ____
 
 - [Использованный стек технологий](#computer-использованный-стек-технологий)
 - [Запуск тестов из терминала](#arrow_forward-запуск-тестов-из-терминала)
-- [Сборка в Jenkins](#сборка-в-jenkins)
+- [Сборка в Jenkins](#aaa-сборка-в-jenkins)
 - [Пример Allure-отчета](#пример-allure-отчета)
 - [Уведомления в Telegram с использованием бота](#уведомления-в-telegram-с-использованием-бота)
 - [Видео примера запуска тестов в Selenoid](#-видео-примера-запуска-теста-в-selenoid)
@@ -175,7 +175,12 @@ main  -DselenoidUI=${SELENOID_UI}
 * <code>BASE_URL</code> – Url, по которому будет открываться тестируемое приложение. По-умолчанию - <code>1920x1080</code>.
 * <code>REMOTE_BROWSER_URL</code> – адрес удаленного сервера, на котором будут запускаться тесты.
 
-## <img src="media/logo/Jenkins.svg" title="Jenkins" width="4%"/> Сборка в Jenkins
+
+
+## :aaa: сборка-в-jenkins
+
+
+## <img src="media/logo/Jenkins.svg" title="Jenkins" width="4%"/> :aaa: Сборка в Jenkins
 <p align="center">
 <img title="Jenkins Build" src="media/screens/JenkinsBuild.png">
 </p>
