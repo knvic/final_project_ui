@@ -117,7 +117,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
 
     @Tags({
             @Tag("raketa"),
-            @Tag("remote"),
+            @Tag("smoke"),
 
     })
     @ParameterizedTest(name = "Проверка наличия вакансии  =>  {0}")
@@ -180,7 +180,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
 
     }
 
-    @Disabled("Выставлена защита. Заплнение формы практически не возможно")
+   // @Disabled("Выставлена защита. Заплнение формы практически не возможно")
     @Epic("Ракета")
     @Feature("Первоначальное тестирование")
     @Story("")
@@ -189,10 +189,8 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
     @Link(value = "Testing", url = "https://raketa.world")
     @DisplayName("Проверка выбора меню КОПМАНИЯ, вызова окна для ввода данных для связи, возможности ввода данных.")
     @Tags({
-            @Tag("raketa"),
-            @Tag("remote"),
-            @Tag("local_test")
-    })
+            @Tag("raketa")
+                })
     @Test
     void checkingFeedbackForm() {
         step("Открытие сайта", () -> {
