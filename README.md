@@ -103,5 +103,5 @@ ${TASK} -DremoteUrl=${SELENOID_URL}
 
 К каждому тесту в отчете прилагается видео прогона.
 <p align="center">
-  <img title="Selenoid Video" src="media/screens/videoTest.gif">
+  <img title="Selenoid Video" src="media/screens/VideoTest.gif">
 </p>
