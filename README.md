@@ -49,10 +49,7 @@ gradle clean run_raketa
 ```
 При выполнении команды, данные тесты запустятся удаленно в <code>Selenoid</code>.
 
-### Запуск тестов на удаленном браузере
-```
-gradle clean test -Denv=main
-```
+
 При необходимости также можно переопределить параметры запуска
 
 ```
@@ -66,6 +63,9 @@ ${TASK} -DremoteUrl=${SELENOID_URL}
 * <code>REMOTE_BROWSER_URL</code> – адрес удаленного сервера, на котором будут запускаться тесты.
 
 ## <img src="media/logo/Jenkins.svg" title="Jenkins" width="4%"/> Сборка в Jenkins
+
+Для запуска сборки необходимо перейти в раздел Собрать с параметрами и нажать кнопку Собрать.
+
 <p align="center">
 <img title="Jenkins Build" src="media/screens/jenkins.PNG">
 </p>
