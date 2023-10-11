@@ -74,29 +74,27 @@ ${TASK} -DremoteUrl=${SELENOID_URL}
 ### Overview
 
 <p align="center">
-<img title="Allure Overview" src="media/screens/Allure1.png">
+<img title="Allure Overview" src="media/screens/Allure1.PNG">
 </p>
 
 ### Результат выполнения теста
 
 <p align="center">
-<img title="Test Results in Alure" src="media/screens/Allure2.png">
+<img title="Test Results in Alure" src="media/screens/Allure2.PNG">
 </p>
 
 <p align="center">
-<img title="Test Results in Alure" src="media/screens/Allure3.png">
+<img title="Test Results in Alure" src="media/screens/Allure3.PNG">
 </p>
 
-<p align="center">
-<img title="Jira Task" src="media/screens/jiraTask.png">
-</p>
+
 
 ## <img width="4%" style="vertical-align:middle" title="Telegram" src="media/logo/Telegram.svg"> Уведомления в Telegram с использованием бота
 
 После завершения сборки, бот созданный в <code>Telegram</code>, автоматически обрабатывает и отправляет сообщение с результатом.
 
 <p align="center">
-<img width="70%" title="Telegram Notifications" src="media/screens/telegram.png">
+<img width="70%" title="Telegram Notifications" src="media/screens/telegram.PNG">
 </p>
 
 ## Видео примера запуска тестов в Selenoid
