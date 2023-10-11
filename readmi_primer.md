@@ -177,7 +177,7 @@ main  -DselenoidUI=${SELENOID_UI}
 
 
 
-## :aaa: сборка-в-jenkins
+
 
 
 ## <img src="media/logo/Jenkins.svg" title="Jenkins" width="4%"/> :aaa: Сборка в Jenkins
