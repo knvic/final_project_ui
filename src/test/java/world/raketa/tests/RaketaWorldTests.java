@@ -11,11 +11,8 @@ import world.raketa.pages.RaketaWorldPage;
 import world.raketa.utils.DataGenerationUtils;
 import world.raketa.utils.RaketaRemoteBaseTest;
 
-
 import java.util.List;
-
 import java.util.stream.Stream;
-
 
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
@@ -26,7 +23,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
     String
             firstName = dataGenerationUtils.getFirstName(),
             lastName = dataGenerationUtils.getLastName(),
-            userNumber = dataGenerationUtils.getUserNumber();
+            phone = dataGenerationUtils.getUserNumber();
     private static int count = 0;
 
 
@@ -63,11 +60,9 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
             raketaWorldPage
                     .shouldHaveTargetMenu(list);
         });
-
-
     }
 
-    static Stream<Arguments> parameterize2() {
+    static Stream<Arguments> checkingСompositionMenu() {
         return Stream.of(
                 Arguments.of("КОМПАНИЯ", List.of("О компании", "Команда", "Медиацентр", "Карьера", "Контакты")),
                 Arguments.of("ПРОДУКТЫ", List.of("Цифровая платформа для командировок", "Мобильное приложение для бизнес-путешественников", "Управление персональными и корпоративными данными", "Управление расходами", "Автопарк")),
@@ -78,15 +73,15 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
 
     @Epic("Ракета")
     @Feature("Первоначальное тестирование")
-    @Story("Соответствие путктов меню")
+    @Story("Соответствие элементов верхнего меню")
     @Owner("krivorotovnv")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "Testing", url = "https://raketa.world")
     @DisplayName("Параметризованный тест проверки списка элементов выпадаюзешл меню при наведении на элементы основного меню.")
-    @MethodSource("parameterize2")
+    @MethodSource("checkingСompositionMenu")
     @Tag("raketa")
     @ParameterizedTest(name = "Проверка наличия выпадающего списка элементов. при наведениина пункт меню  {0} отображается элементы списка {1}")
-    void parameterize2(String item, List<String> list) {
+    void checkingСompositionMenu(String item, List<String> list) {
         step("Открытие сайта", () -> {
             raketaWorldPage
                     .openPage();
@@ -185,7 +180,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
 
     }
 
-    @Disabled
+    @Disabled("Выставлена защита. Заплнение формы практически не возможно")
     @Epic("Ракета")
     @Feature("Первоначальное тестирование")
     @Story("")
@@ -199,7 +194,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
             @Tag("local_test")
     })
     @Test
-    void form() {
+    void checkingFeedbackForm() {
         step("Открытие сайта", () -> {
             raketaWorldPage
                     .openPage();
@@ -230,7 +225,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
 
         step("Заполняем поля формы. Поле email вводим не правильно, чтобы форма не отправлялась и жмем отправить", () -> {
             raketaWorldPage
-                    .fillingTheForm("A", "D", "7", "Т");
+                    .fillingTheForm(firstName, "Не правильный email", phone, "Компания");
         });
 
         step("Так как заполнено не корректно, проверяем, что форма видна ", () -> {
