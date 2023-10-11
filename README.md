@@ -44,7 +44,8 @@
 
 ### Запуск тестов из терминала
 ```
-gradle clean main_test
+gradle clean run_raketa 
+
 ```
 При выполнении команды, данные тесты запустятся удаленно в <code>Selenoid</code>.
 

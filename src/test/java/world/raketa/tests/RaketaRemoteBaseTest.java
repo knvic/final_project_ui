@@ -1,4 +1,4 @@
-package world.raketa.utils;
+package world.raketa.tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
@@ -26,8 +26,6 @@ public class RaketaRemoteBaseTest {
 
 
         Configuration.remote = "https://user1:1234@"+System.getProperty("selenoidUI", "selenoid.autotests.cloud")+"/wd/hub";
-        // Configuration.remote = "http://localhost:4444/wd/hub";
-
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,

@@ -9,7 +9,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import world.raketa.pages.Locale;
 import world.raketa.pages.RaketaWorldPage;
 import world.raketa.utils.DataGenerationUtils;
-import world.raketa.utils.RaketaRemoteBaseTest;
 
 import java.util.List;
 import java.util.stream.Stream;
