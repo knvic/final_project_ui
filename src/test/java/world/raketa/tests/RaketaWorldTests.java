@@ -179,7 +179,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
 
     }
 
-   // @Disabled("Выставлена защита. Заплнение формы практически не возможно")
+
     @Epic("Ракета")
     @Feature("Первоначальное тестирование")
     @Story("")
