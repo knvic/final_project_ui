@@ -8,6 +8,7 @@
 - [Сборка в Jenkins](#-сборка-в-jenkins)
 - [Пример Allure-отчета](#-пример-allure-отчета)
 - [Интеграция с Allure TestOps](#-интеграция-с-allure-testOps)
+- [Интеграция с Jira](#-интеграция-с-jira)
 - [Уведомления в Telegram с использованием бота](#-уведомления-в-telegram-с-использованием-бота)
 - [Видео примера запуска тестов в Selenoid](#-видео-примера-запуска-тестов-в-selenoid)
   
@@ -23,6 +24,8 @@
 <img width="6%" title="JUnit5" src="media/logo/JUnit5.svg">
 <img width="6%" title="GitHub" src="media/logo/GitHub.svg">
 <img width="6%" title="Jenkins" src="media/logo/Jenkins.svg">
+<img width="6%" title="Jenkins" src="media/logo/AllureTestOps.svg">
+<img width="6%" title="Jenkins" src="media/logo/Jira.svg">
 <img width="6%" title="IntelliJ IDEA" src="media/logo/Intelij_IDEA.svg">
 <img width="6%" title="Telegram" src="media/logo/Telegram.svg">
 </p>
@@ -95,7 +98,7 @@ ${TASK} -DremoteUrl=${SELENOID_URL}
 Результат выполнения автотестов отображается в <code>Allure TestOps</code>
 На Dashboard в <code>Allure TestOps</code> отображена статистика пройденных тестов.
 
-AllureTestOpsDash.PNG
+
 <p align="center">
 <img title="Allure TestOps DashBoard" src="media/screens/AllureTestOpsDash.PNG">
 </p>
@@ -109,7 +112,7 @@ AllureTestOpsDash.PNG
 Реализована интеграция <code>Allure TestOps</code> с <code>Jira</code>, в тикете отображается информация, какие тест-кейсы были написаны в рамках задачи и результат их прогона.
 
 <p align="center">
-<img title="Jira Task" src="media/screens/jiraTask.png">
+<img title="Jira Task" src="media/screens/Jira.PNG">
 </p>
 
 
