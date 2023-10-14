@@ -71,7 +71,7 @@ ${TASK} -DremoteUrl=${SELENOID_URL}
 Для запуска сборки необходимо перейти в раздел Собрать с параметрами и нажать кнопку Собрать.
 
 <p align="center">
-<img title="Jenkins Build" src="media/screens/jenkins.PNG">
+<img title="Jenkins Build" src="media/screens/jenkins1.PNG">
 </p>
 
 ## <img src="media/logo/Allure_Report.svg" title="Allure Report" width="4%"/> Пример Allure-отчета
