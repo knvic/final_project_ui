@@ -7,6 +7,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import world.raketa.config.ConfigReader;
+import world.raketa.config.WebConfig;
+import world.raketa.config.WebConfigForProject;
 import world.raketa.helpers.Attach;
 
 import java.util.Map;
@@ -14,25 +17,13 @@ import java.util.Map;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class RaketaRemoteBaseTest {
-
+    private static final WebConfig config = ConfigReader.Instance.read();
 
     @BeforeAll
     static void beforeAll() {
+        WebConfigForProject webConfigForProject = new WebConfigForProject(config);
+        webConfigForProject.webConfig();
 
-        System.setProperty("selenide.browser", "Chrome");
-        Configuration.baseUrl = "https://www.raketa.world";
-        Configuration.browserSize = "1920x1800";
-        Configuration.pageLoadStrategy = "eager";
-
-
-        Configuration.remote = "https://user1:1234@"+System.getProperty("selenoidUI", "selenoid.autotests.cloud")+"/wd/hub";
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                "enableVNC", true,
-                "enableVideo", true
-        ));
-
-        Configuration.browserCapabilities = capabilities;
     }
 
     @BeforeEach

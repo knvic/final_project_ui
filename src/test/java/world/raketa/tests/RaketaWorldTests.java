@@ -115,8 +115,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
     @DisplayName("Тест проверки ссылки на страницу вакансий и вакансий на странице согласно списка")
 
     @Tags({
-            @Tag("raketa"),
-            @Tag("smoke"),
+            @Tag("raketa")
 
     })
     @ParameterizedTest(name = "Проверка наличия вакансии  =>  {0}")
@@ -164,7 +163,13 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "Testing", url = "https://job.raketa.world/qaautomation")
     @DisplayName("Тестирование наличия опции Йога в обед в условиях работы")
-    @Tag("raketa")
+
+    @Tags({
+            @Tag("raketa"),
+            @Tag("smoke"),
+
+    })
+
     @Test
     void mainConditionOfWork() {
         step("Открытие сайта на странице карьера", () -> {

@@ -12,6 +12,7 @@ import java.nio.charset.StandardCharsets;
 import static com.codeborne.selenide.Selenide.sessionId;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.openqa.selenium.logging.LogType.BROWSER;
+import static world.raketa.config.ConfigReader.webConfig;
 
 public class Attach {
     @Attachment(value = "{attachName}", type = "image/png")
@@ -44,7 +45,9 @@ public class Attach {
     }
 
     public static URL getVideoUrl() {
-        String videoUrl = "https://"+System.getProperty("selenoidUI", "selenoid.autotests.cloud")+"/video/"+ sessionId() + ".mp4";
+        //String videoUrl = "https://"+System.getProperty("remoteBaseUrl", "selenoid.autotests.cloud")+"/video/"+ sessionId() + ".mp4";
+
+        String videoUrl = "https://"+ webConfig.getRemoteBaseUrl()+"/video/"+ sessionId() + ".mp4";
         //String videoUrl = "https://localhost:4444"+"/video/"+ sessionId() + ".mp4";
 
         try {
