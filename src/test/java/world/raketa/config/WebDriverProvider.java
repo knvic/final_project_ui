@@ -54,13 +54,9 @@ public class WebDriverProvider implements Supplier<WebDriver> {
                 }
 
                 ChromeOptions options = new ChromeOptions();
-                //options.setBinary("C:\\QA\\yandexdriver.exe");
-                options.setBinary("C:\\Users\\Я\\AppData\\Local\\Yandex\\YandexBrowser\\Application\\browser.exe");
-                // WebDriverRunner.setWebDriver(new ChromeDriver(options));
-                WebDriver driver = new ChromeDriver(options);
-               // WebDriverRunner.setWebDriver(driver);
-                driver.get(config.getBaseUrl());
-                return driver;
+                options.setBinary("C:\\Program Files (x86)\\Yandex\\YandexBrowser\\Application\\browser.exe");
+
+                return new ChromeDriver(options);
             }
 
             default: {

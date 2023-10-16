@@ -15,6 +15,7 @@ import world.raketa.helpers.Attach;
 import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static world.raketa.config.ConfigReader.webConfig;
 
 public class RaketaRemoteBaseTest {
     private static final WebConfig config = ConfigReader.Instance.read();
@@ -33,11 +34,13 @@ public class RaketaRemoteBaseTest {
 
     @AfterEach
     void addAttachments() {
+
+        if (webConfig.isRemote()) {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
-
+}
         closeWebDriver();
     }
 

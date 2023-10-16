@@ -19,17 +19,22 @@ public class WebConfigForProject {
 
 
        // provider.get();
+
+        if (!webConfig.isRemote()) {
+            WebDriverProvider provider=new WebDriverProvider();
+            setWebDriver(provider.get());
+        }
         Configuration.baseUrl = webConfig.getBaseUrl();
-        Configuration.browser = webConfig.getBrowser().toString();
-        Configuration.browserVersion = webConfig.getBrowserVersion();
+        //Configuration.browser = webConfig.getBrowser().toString();
+
         Configuration.browserSize = webConfig.getBrowserSize();
         Configuration.pageLoadStrategy = "eager";
 
-        WebDriverProvider provider=new WebDriverProvider();
-        setWebDriver(provider.get());
+
 
         if (webConfig.isRemote()) {
-
+            Configuration.browser = webConfig.getBrowser().toString();
+            Configuration.browserVersion = webConfig.getBrowserVersion();
             Configuration.remote = webConfig.getRemoteUrl();
 
             DesiredCapabilities capabilities = new DesiredCapabilities();
