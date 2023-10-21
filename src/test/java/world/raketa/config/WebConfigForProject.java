@@ -18,19 +18,10 @@ public class WebConfigForProject {
     public void webConfig() {
 
 
-       // provider.get();
-
-        if (!webConfig.isRemote()) {
-            WebDriverProvider provider=new WebDriverProvider();
-            setWebDriver(provider.get());
-        }
         Configuration.baseUrl = webConfig.getBaseUrl();
-        //Configuration.browser = webConfig.getBrowser().toString();
-
+        Configuration.browser = webConfig.getBrowser().toString();
         Configuration.browserSize = webConfig.getBrowserSize();
         Configuration.pageLoadStrategy = "eager";
-
-
 
         if (webConfig.isRemote()) {
             Configuration.browser = webConfig.getBrowser().toString();
