@@ -7,11 +7,8 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import world.raketa.pages.*;
-import world.raketa.utils.DataGenerationUtils;
-
 import java.util.List;
 import java.util.stream.Stream;
-
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
@@ -20,16 +17,14 @@ import static io.qameta.allure.Allure.step;
 @Owner("krivorotovnv")
 @Link(value = "Testing", url = "https://raketa.world")
 @Severity(SeverityLevel.BLOCKER)
-public class RaketaWorldTests extends RaketaRemoteBaseTest {
-    RaketaWorldPage raketaWorldPage = new RaketaWorldPage();
+public class RaketaWorldTests extends BaseTest {
+    MainPage mainPage = new MainPage();
     CompanyPage companyPage = new CompanyPage();
     CareerPage careerPage = new CareerPage();
     VacancyListPage vacancyListPage = new VacancyListPage();
     VacancyQAPage vacancyQAPage = new VacancyQAPage();
-    DataGenerationUtils dataGenerationUtils = new DataGenerationUtils();
-    String
-            firstName = dataGenerationUtils.getFirstName(),
-            phone = dataGenerationUtils.getUserNumber();
+
+
     private static int count = 0;
 
 
@@ -46,18 +41,18 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
     @ParameterizedTest(name = "Проверка меню сайта при перелючении локали на {0} отображается меню {1}")
     void changeLocaleTest(Locale locale, List<String> list) {
         step("Открытие сайта", () -> {
-            raketaWorldPage
+            mainPage
                     .openPage();
         });
 
         step("Выбор локали {0}", () -> {
-            raketaWorldPage
+            mainPage
                     .setLocale(locale);
 
         });
 
         step("Проверка наличия элементов меню согласно списка, а,так же, соответствия с выбранным языком", () -> {
-            raketaWorldPage
+            mainPage
                     .shouldHaveTargetMenu(list);
         });
     }
@@ -77,17 +72,17 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
     @ParameterizedTest(name = "Проверка наличия выпадающего списка элементов. При наведениина пункт меню  {0} отображается элементы списка {1}")
     void checkingСompositionMenu(String item, List<String> list) {
         step("Открытие сайта", () -> {
-            raketaWorldPage
+            mainPage
                     .openPage();
         });
 
         step("Ожидаем корректной загрузки стартовой страницы (появление определенного текста) ", () -> {
-            raketaWorldPage
+            mainPage
                     .waitingForTheSiteToLoad();
         });
 
         step("Проверка элементов выпадающего меню соответствию списка.", () -> {
-            raketaWorldPage
+            mainPage
                     .checkElementsPullDownMenu(list, count, item);
         });
         count++;
@@ -109,16 +104,16 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
     @ParameterizedTest(name = "Проверка наличия вакансии  =>  {0}")
     void availabilityLinkToVacanciesAndListVacancy(String vacancy) {
         step("Открытие сайта", () -> {
-            raketaWorldPage
+            mainPage
                     .openPage();
         });
         step("Ожидаем корректной загрузки стартовой страницы (появление определенного текста) ", () -> {
-            raketaWorldPage
+            mainPage
                     .waitingForTheSiteToLoad();
         });
 
         step("Первый пункт основного меню. В выпадающем списке находим Карьера, проверяем видимость и выбираем", () -> {
-            raketaWorldPage
+            mainPage
                     .career();
         });
         step("Ожидаем корректной загрузки страницы Карьера (появление определенного текста) ", () -> {
@@ -176,16 +171,16 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
     @Test
     void checkingFeedbackForm() {
         step("Открытие сайта", () -> {
-            raketaWorldPage
+            mainPage
                     .openPage();
         });
         step("Ожидаем корректной загрузки стартовой страницы (появление определенного текста) ", () -> {
-            raketaWorldPage
+            mainPage
                     .waitingForTheSiteToLoad();
         });
 
         step("Находим пункт меню КОМПАНИЯ и кликаем на него", () -> {
-            raketaWorldPage
+            mainPage
                     .goToTheMenuItemCompany();
         });
         step("Ожидаем корректной загрузки страницы Компания и наличия в нем определенного текста ", () -> {
@@ -205,7 +200,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
 
         step("Заполняем поля формы. Поле email вводим не правильно, чтобы форма не отправлялась и жмем отправить", () -> {
             companyPage
-                    .fillingTheForm(firstName, "Не правильный email", phone, "Компания");
+                    .fillingTheForm();
         });
 
         step("Так как заполнено не корректно, проверяем, что форма видна ", () -> {

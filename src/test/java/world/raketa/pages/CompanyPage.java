@@ -2,9 +2,8 @@ package world.raketa.pages;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-
+import world.raketa.utils.DataGenerationUtils;
 import java.time.Duration;
-
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
@@ -23,11 +22,7 @@ SelenideElement
         buttonSubmit = tabInput.$("[type=submit]");
 
     ElementsCollection
-
             fieldText = $$("div [field=text]");
-
-
-
 
     public CompanyPage waitingForTheSiteCompanyToLoad() {
         fieldText.first().shouldHave(text("Компания Ракета – российский разработчик"));
@@ -42,11 +37,14 @@ SelenideElement
         tabInput.shouldBe(visible, Duration.ofSeconds(10));
         return this;
     }
-    public CompanyPage fillingTheForm(String name, String email, String phone, String input) {
-        fieldName.setValue(name);
-        fieldEmail.setValue(email);
-        fildPhone.setValue(phone);
-        fildInput.setValue(input);
+    public CompanyPage fillingTheForm() {
+
+        DataGenerationUtils dataGenerationUtils = new DataGenerationUtils();
+
+        fieldName.setValue(dataGenerationUtils.getFirstName());
+        fieldEmail.setValue("Не правильный email");
+        fildPhone.setValue(dataGenerationUtils.getUserNumber());
+        fildInput.setValue("Компания");
         fieldCheckBox.scrollTo().click();
         buttonSubmit.click();
         return this;
