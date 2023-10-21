@@ -6,8 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import world.raketa.pages.Locale;
-import world.raketa.pages.RaketaWorldPage;
+import world.raketa.pages.*;
 import world.raketa.utils.DataGenerationUtils;
 
 import java.util.List;
@@ -18,6 +17,10 @@ import static io.qameta.allure.Allure.step;
 
 public class RaketaWorldTests extends RaketaRemoteBaseTest {
     RaketaWorldPage raketaWorldPage = new RaketaWorldPage();
+    CompanyPage companyPage =new CompanyPage();
+    CareerPage careerPage =new CareerPage();
+    VacancyListPage vacancyListPage =new VacancyListPage();
+    VacancyQAPage vacancyQAPage=new VacancyQAPage();
     DataGenerationUtils dataGenerationUtils = new DataGenerationUtils();
     String
             firstName = dataGenerationUtils.getFirstName(),
@@ -134,22 +137,22 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
                     .career();
         });
         step("Ожидаем корректной загрузки страницы Карьера (появление определенного текста) ", () -> {
-            raketaWorldPage
+            careerPage
                     .waitingForThePageCareerLoad();
         });
 
         step("Проверка наличия ссылки на вакансии", () -> {
-            raketaWorldPage
+            careerPage
                     .linkVacancyEnabled();
         });
 
-        step("После оперехода по ссылке на страницу вакансии открывается новое окно, а фокус оствется на другом. Ищем windowHandle окон, закрываем не нужное. переходим на окнос вакансиями", () -> {
-            raketaWorldPage
+        step("После перехода по ссылке на страницу вакансии открывается новое окно, а фокус оствется на другом. Ищем windowHandle окон, закрываем не нужное. переходим на окнос вакансиями", () -> {
+            careerPage
                     .selectTargetWindows();
         });
 
         step("Проверка наличия ссылки на вакансии QA automation engineer);", () -> {
-            raketaWorldPage
+            vacancyListPage
                     .findVacancy(vacancy);
         });
 
@@ -177,7 +180,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
         });
 
         step("Поиск ключевого условия Йога в обед в предложениях вакансии", () -> {
-            raketaWorldPage
+            vacancyQAPage
                     .yogaAtLunch();
         });
 
@@ -211,27 +214,27 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
                     .goToTheMenuItemCompany();
         });
         step("Ожидаем корректной загрузки страницы Компания и наличия в нем определенного текста ", () -> {
-            raketaWorldPage
+            companyPage
                     .waitingForTheSiteCompanyToLoad();
         });
 
         step("Нажимаем на кнопку вызова окна ввода данных ля связи ", () -> {
-            raketaWorldPage
+            companyPage
                     .callingInpitTab();
         });
 
         step("Проверяем загрузку и видимость окна", () -> {
-            raketaWorldPage
+            companyPage
                     .checkVisibleInpitTab();
         });
 
         step("Заполняем поля формы. Поле email вводим не правильно, чтобы форма не отправлялась и жмем отправить", () -> {
-            raketaWorldPage
+            companyPage
                     .fillingTheForm(firstName, "Не правильный email", phone, "Компания");
         });
 
         step("Так как заполнено не корректно, проверяем, что форма видна ", () -> {
-            raketaWorldPage
+            companyPage
                     .checkVisibleInpitTab();
         });
 
