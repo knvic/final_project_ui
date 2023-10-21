@@ -15,16 +15,20 @@ import java.util.stream.Stream;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
+@Epic("Ракета")
+@Feature("Первоначальное тестирование")
+@Owner("krivorotovnv")
+@Link(value = "Testing", url = "https://raketa.world")
+@Severity(SeverityLevel.BLOCKER)
 public class RaketaWorldTests extends RaketaRemoteBaseTest {
     RaketaWorldPage raketaWorldPage = new RaketaWorldPage();
-    CompanyPage companyPage =new CompanyPage();
-    CareerPage careerPage =new CareerPage();
-    VacancyListPage vacancyListPage =new VacancyListPage();
-    VacancyQAPage vacancyQAPage=new VacancyQAPage();
+    CompanyPage companyPage = new CompanyPage();
+    CareerPage careerPage = new CareerPage();
+    VacancyListPage vacancyListPage = new VacancyListPage();
+    VacancyQAPage vacancyQAPage = new VacancyQAPage();
     DataGenerationUtils dataGenerationUtils = new DataGenerationUtils();
     String
             firstName = dataGenerationUtils.getFirstName(),
-            lastName = dataGenerationUtils.getLastName(),
             phone = dataGenerationUtils.getUserNumber();
     private static int count = 0;
 
@@ -35,13 +39,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
                 Arguments.of(Locale.EN, List.of("COMPANY", "PRODUCTS", "FOR CLIENTS", "GET STARTED", "CONTACTS", "LOGIN"))
         );
     }
-
-    @Epic("Ракета")
-    @Feature("Первоначальное тестирование")
     @Story("Переключение локали")
-    @Owner("krivorotovnv")
-    @Severity(SeverityLevel.BLOCKER)
-    @Link(value = "Testing", url = "https://raketa.world")
     @DisplayName("Параметризованный тест проверки наличия списка основного меню в разных локалях")
     @MethodSource("changeLocaleTest")
     @Tag("raketa")
@@ -58,7 +56,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
 
         });
 
-        step("Проверка наличия элементов меню согласно списка, а ,так же, соответствия с выбранным языком", () -> {
+        step("Проверка наличия элементов меню согласно списка, а,так же, соответствия с выбранным языком", () -> {
             raketaWorldPage
                     .shouldHaveTargetMenu(list);
         });
@@ -72,17 +70,11 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
 
         );
     }
-
-    @Epic("Ракета")
-    @Feature("Первоначальное тестирование")
     @Story("Соответствие элементов верхнего меню")
-    @Owner("krivorotovnv")
-    @Severity(SeverityLevel.BLOCKER)
-    @Link(value = "Testing", url = "https://raketa.world")
-    @DisplayName("Параметризованный тест проверки списка элементов выпадаюзешл меню при наведении на элементы основного меню.")
+    @DisplayName("Параметризованный тест проверки списка элементов выпадающего меню при наведении на элементы основного меню.")
     @MethodSource("checkingСompositionMenu")
     @Tag("raketa")
-    @ParameterizedTest(name = "Проверка наличия выпадающего списка элементов. при наведениина пункт меню  {0} отображается элементы списка {1}")
+    @ParameterizedTest(name = "Проверка наличия выпадающего списка элементов. При наведениина пункт меню  {0} отображается элементы списка {1}")
     void checkingСompositionMenu(String item, List<String> list) {
         step("Открытие сайта", () -> {
             raketaWorldPage
@@ -94,7 +86,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
                     .waitingForTheSiteToLoad();
         });
 
-        step("Проверка элементов выпадающего меню соотсетствию списка.", () -> {
+        step("Проверка элементов выпадающего меню соответствию списка.", () -> {
             raketaWorldPage
                     .checkElementsPullDownMenu(list, count, item);
         });
@@ -109,17 +101,10 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
                     "QA Lead"
             }
     )
-    @Epic("Ракета")
-    @Feature("Первоначальное тестирование")
     @Story("Проверка наличия вакансий на странице вакансий")
-    @Owner("krivorotovnv")
-    @Severity(SeverityLevel.BLOCKER)
-    @Link(value = "Testing", url = "https://raketa.world")
     @DisplayName("Тест проверки ссылки на страницу вакансий и вакансий на странице согласно списка")
-
     @Tags({
             @Tag("raketa")
-
     })
     @ParameterizedTest(name = "Проверка наличия вакансии  =>  {0}")
     void availabilityLinkToVacanciesAndListVacancy(String vacancy) {
@@ -132,7 +117,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
                     .waitingForTheSiteToLoad();
         });
 
-        step("первый пункт основного меню. В выпадаюзм списке находим Карьера, проверяем видимость и выбираем", () -> {
+        step("Первый пункт основного меню. В выпадающем списке находим Карьера, проверяем видимость и выбираем", () -> {
             raketaWorldPage
                     .career();
         });
@@ -146,7 +131,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
                     .linkVacancyEnabled();
         });
 
-        step("После перехода по ссылке на страницу вакансии открывается новое окно, а фокус оствется на другом. Ищем windowHandle окон, закрываем не нужное. переходим на окнос вакансиями", () -> {
+        step("После перехода по ссылке на страницу вакансии открывается новое окно, а фокус оствется на другом. Ищем windowHandle окон, закрываем не нужное, переходим на окно с вакансиями", () -> {
             careerPage
                     .selectTargetWindows();
         });
@@ -159,20 +144,15 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
 
     }
 
-    @Epic("Ракета")
-    @Feature("Первоначальное тестирование")
+
     @Story("Проверка наличия главного условия в работе QA automation engineer")
-    @Owner("krivorotovnv")
-    @Severity(SeverityLevel.BLOCKER)
     @Link(value = "Testing", url = "https://job.raketa.world/qaautomation")
     @DisplayName("Тестирование наличия опции Йога в обед в условиях работы")
-
     @Tags({
             @Tag("raketa"),
             @Tag("smoke"),
 
     })
-
     @Test
     void mainConditionOfWork() {
         step("Открытие сайта на странице карьера", () -> {
@@ -188,16 +168,11 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
     }
 
 
-    @Epic("Ракета")
-    @Feature("Первоначальное тестирование")
-    @Story("")
-    @Owner("krivorotovnv")
-    @Severity(SeverityLevel.BLOCKER)
-    @Link(value = "Testing", url = "https://raketa.world")
+    @Story("Заполнение формы обратной связи")
     @DisplayName("Проверка выбора меню КОПМАНИЯ, вызова окна для ввода данных для связи, возможности ввода данных.")
     @Tags({
             @Tag("raketa")
-                })
+    })
     @Test
     void checkingFeedbackForm() {
         step("Открытие сайта", () -> {
@@ -218,7 +193,7 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
                     .waitingForTheSiteCompanyToLoad();
         });
 
-        step("Нажимаем на кнопку вызова окна ввода данных ля связи ", () -> {
+        step("Нажимаем на кнопку вызова окна ввода данных для связи ", () -> {
             companyPage
                     .callingInpitTab();
         });
@@ -237,7 +212,6 @@ public class RaketaWorldTests extends RaketaRemoteBaseTest {
             companyPage
                     .checkVisibleInpitTab();
         });
-
 
     }
 
