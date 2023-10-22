@@ -64,11 +64,11 @@ task run_raketa(type: Test) {
         includeTags("raketa")
     }
 }
-/*task run_smoke(type: Test) {
+task run_smoke(type: Test) {
     useJUnitPlatform {
         includeTags("smoke")
     }
-}*/
+}
 
 
 
