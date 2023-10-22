@@ -7,10 +7,7 @@ import org.aeonbits.owner.Config;
 
 import java.net.URL;
 
-@Config.Sources({
-        "classpath:${env}.properties",
-        "classpath:local.properties"
-})
+
 
 public interface WebConfig extends Config {
 
@@ -19,12 +16,8 @@ public interface WebConfig extends Config {
     String getBaseUrl();
 
     @Key("browser")
-    @DefaultValue("YA")
+    @DefaultValue("CHROME")
     Browser getBrowser();
-
-    @Key("remoteUrl")
-    @DefaultValue("http://localhost:4444")
-    URL getRemoteURL();
 
     @Key("browserVersion")
     @DefaultValue("100.0")
@@ -38,9 +31,6 @@ public interface WebConfig extends Config {
     @DefaultValue("false")
     Boolean isRemote();
 
-    @Key("isLocalSelenoid")
-    @DefaultValue("false")
-    Boolean  isLocalSelenoid();
 
     @Key("remoteUrl")
     @DefaultValue("https://user1:1234@selenoid.autotests.cloud/wd/hub")
