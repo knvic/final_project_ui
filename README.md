@@ -70,29 +70,26 @@ ${TASK} -DremoteUrl=${SELENOID_URL}
 
 Для запуска сборки необходимо перейти в раздел Собрать с параметрами и нажать кнопку Собрать.
 
-<p align="center">
-<img title="Jenkins Build" src="media/screens/jenkins1.PNG">
-</p>
+
 
 <kbd>[![](media/screens/jenkins1.PNG)](https://jenkins.autotests.cloud/job/021-knvik-jenkins_raketa_all_alltops_jira_tg_config/)</kbd>
 
 ## <img src="media/logo/Allure_Report.svg" title="Allure Report" width="4%"/> Пример Allure-отчета
 ### Overview
 
-<p align="center">
-<img title="Allure Overview" src="media/screens/Allure1.PNG">
-</p>
+
+
+<kbd>[![](media/screens/Allure1.PNG)](https://jenkins.autotests.cloud/job/021-knvik-jenkins_raketa_all_alltops_jira_tg/16/allure/#)</kbd>
 
 ### Результат выполнения теста
 
-<p align="center">
-<img title="Test Results in Alure" src="media/screens/Allure2.PNG">
-</p>
+<kbd>[![](media/screens/Allure2.PNG)](https://jenkins.autotests.cloud/job/021-knvik-jenkins_raketa_all_alltops_jira_tg/16/allure/#suites/129ac936ae3c796ae95cabb5edc1b869/16a8391194530603/
+)</kbd>
 
-<p align="center">
-<img title="Test Results in Alure" src="media/screens/Allure3.PNG">
-</p>
 
+
+<kbd>[![](media/screens/Allure3.PNG)](https://jenkins.autotests.cloud/job/021-knvik-jenkins_raketa_all_alltops_jira_tg/16/allure/#behaviors/ad278f761a7c8b2f9f37925e0bd8ca8e/db272aebe61ef5c/
+)</kbd>
 
 ## <img src="media/logo/AllureTestOps.svg" title="Allure TestOps" width="4%"/> Интеграция с Allure TestOps
 
@@ -101,13 +98,10 @@ ${TASK} -DremoteUrl=${SELENOID_URL}
 На Dashboard в <code>Allure TestOps</code> отображена статистика пройденных тестов.
 
 
-<p align="center">
-<img title="Allure TestOps DashBoard" src="media/screens/AllureTestOpsDash.PNG">
-</p>
+<kbd>[![](media/screens/AllureTestOpsDash.PNG)](https://allure.autotests.cloud/project/3718/dashboards)</kbd>
 
-<p align="center">
-<img title="Allure TestOps DashBoard" src="media/screens/AllureTestOps.PNG">
-</p>
+
+<kbd>[![](media/screens/AllureTestOps.PNG)](https://allure.autotests.cloud/project/3718/test-cases/26691?treeId=0)</kbd>
 
 ## <img src="media/logo/Jira.svg" title="Jira" width="4%"/> Интеграция с Jira
 
