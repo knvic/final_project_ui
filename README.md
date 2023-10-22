@@ -107,9 +107,9 @@ ${TASK} -DremoteUrl=${SELENOID_URL}
 
 Реализована интеграция <code>Allure TestOps</code> с <code>Jira</code>, в тикете отображается информация, какие тест-кейсы были написаны в рамках задачи и результат их прогона.
 
-<p align="center">
-<img title="Jira Task" src="media/screens/Jira.PNG">
-</p>
+
+
+<kbd>[![](media/screens/Jira.PNG)](https://jira.autotests.cloud/browse/HOMEWORK-914)</kbd>
 
 
 ## <img width="4%" style="vertical-align:middle" title="Telegram" src="media/logo/Telegram.svg"> Уведомления в Telegram с использованием бота
