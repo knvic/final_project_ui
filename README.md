@@ -74,6 +74,8 @@ ${TASK} -DremoteUrl=${SELENOID_URL}
 <img title="Jenkins Build" src="media/screens/jenkins1.PNG">
 </p>
 
+<kbd>[![](media/screens/jenkins1.PNG)](https://jenkins.autotests.cloud/job/021-knvik-jenkins_raketa_all_alltops_jira_tg_config/)</kbd>
+
 ## <img src="media/logo/Allure_Report.svg" title="Allure Report" width="4%"/> Пример Allure-отчета
 ### Overview
 
