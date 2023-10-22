@@ -48,27 +48,42 @@
 
 ### Запуск тестов из терминала
 ```
-gradle clean run_raketa  -Denv=remote
+gradle clean run_raketa 
+```
+При выполнении команды, данные тесты запустятся на локальной машине.
 
+```
+gradle clean run_raketa -DisRemote=true
 ```
 При выполнении команды, данные тесты запустятся удаленно в <code>Selenoid</code>.
 
 
 При необходимости также можно переопределить параметры запуска
 
-```
-clean
-${TASK} -DremoteUrl=${SELENOID_URL}
-
-```
 
 ### Параметры сборки
 
-* <code>REMOTE_BROWSER_URL</code> – адрес удаленного сервера, на котором будут запускаться тесты.
+* <code>-DisRemote</code> – локальная машина либо удаленный Selenoid.
+* <code>-DselenoidUI</code> – базовый адрес удаленного сервера Selenoid .
+* <code>-Dbrowser </code> –  браузер для запуска тестов.
+* <code>-DbrowserVersion</code> – версия браузера.
+* <code>-DbrowserSize</code> – разрешение браузера.
+
+
+
+
+
 
 ## <img src="media/logo/Jenkins.svg" title="Jenkins" width="4%"/> Сборка в Jenkins
 
 Для запуска сборки необходимо перейти в раздел Собрать с параметрами и нажать кнопку Собрать.
+
+* <code>${TASK}</code> – выбор задачи.
+* <code>${REMOTE}</code> – установлен выбор запуска на удаленном Selenoid.
+* <code>${SELENOID_BASE_URL}</code> – базовый адрес удаленного сервера Selenoid .
+* <code>${BROWSER}</code> –  браузер для запуска тестов.
+* <code>${BROWSER_VERSION}</code> – версия браузера.
+* <code>${BROWSER_SIZE}</code> – разрешение браузера.
 
 
 
