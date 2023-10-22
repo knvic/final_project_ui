@@ -20,7 +20,12 @@ public class CareerPage {
         return this;
     }
 
+
     public CareerPage linkVacancyEnabled() {
+        linkToThePageVacancy.shouldBe(enabled).scrollTo();
+        return this;
+    }
+    public CareerPage goToListVacancy() {
         linkToThePageVacancy.shouldBe(enabled).scrollTo().click();
         return this;
     }
