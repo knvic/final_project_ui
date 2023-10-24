@@ -2,8 +2,10 @@ package world.raketa.pages;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+
 import java.time.Duration;
 import java.util.List;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selectors.byText;
@@ -67,21 +69,6 @@ public class MainPage {
         return this;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public MainPage waitingForTheSiteToLoad() {
         loadingAreaMainPage.first().shouldHave(text("Экономьте на командировках, улучшайте контроль по поездкам, " +
                 "ускоряйте отчетность. Пришло время рассмотреть цифровую " +
@@ -94,14 +81,6 @@ public class MainPage {
         topMenu.find(byText("Компания")).click();
         return this;
     }
-
-
-
-
-
-
-
-
 
 
 }

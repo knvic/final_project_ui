@@ -1,6 +1,8 @@
 
 <h1> Проект по автоматизации тестовых сценариев для сайта цифровой платформы для организации командировок и управления расходами  </h1>
 
+* ### https://raketa.world/ – тестируемый ресурс.
+
 ## :pushpin: Содержание:
 
 - [Использованный стек технологий](#computer-использованный-стек-технологий)
@@ -63,45 +65,44 @@ gradle clean run_raketa -DisRemote=true
 
 ### Параметры сборки
 
-* <code>-DisRemote</code> – локальная машина либо удаленный Selenoid.
-* <code>-DselenoidUI</code> – базовый адрес удаленного сервера Selenoid .
-* <code>-Dbrowser </code> –  браузер для запуска тестов.
-* <code>-DbrowserVersion</code> – версия браузера.
-* <code>-DbrowserSize</code> – разрешение браузера.
+* <code>isRemote</code> – локальная машина либо удаленный Selenoid.
+* <code>selenoidUI</code> – базовый адрес удаленного сервера Selenoid .
+* <code>browser </code> –  браузер для запуска тестов.
+* <code>browserVersion</code> – версия браузера.
+* <code>browserSize</code> – разрешение браузера.
 
 
 
 
 
 
-## <img src="media/logo/Jenkins.svg" title="Jenkins" width="4%"/> Сборка в Jenkins
+## <img src="media/logo/Jenkins.svg" title="Jenkins" width="4%"/> <a href="https://jenkins.autotests.cloud/job/021-knvik-jenkins_raketa_all_alltops_jira_tg/" target="_blank" rel="noopener"><span>Сборка в Jenkins</span> </a>
 
-Для запуска сборки необходимо перейти в раздел Собрать с параметрами и нажать кнопку Собрать.
+Для запуска сборки необходимо перейти в раздел Собрать с параметрами и нажать кнопку Собрать. 
 
-* <code>${TASK}</code> – выбор задачи.
-* <code>${REMOTE}</code> – установлен выбор запуска на удаленном Selenoid.
-* <code>${SELENOID_BASE_URL}</code> – базовый адрес удаленного сервера Selenoid .
-* <code>${BROWSER}</code> –  браузер для запуска тестов.
-* <code>${BROWSER_VERSION}</code> – версия браузера.
-* <code>${BROWSER_SIZE}</code> – разрешение браузера.
+####   Доступные для изменения параметры :
+* <code>TASK</code> – выбор задачи.
+* <code>BROWSER</code> –  браузер для запуска тестов.
+* <code>BROWSER_VERSION</code> – версия браузера.
+* <code>BROWSER_SIZE</code> – разрешение браузера.
 
 
 
 <kbd>[![](media/screens/jenkins1.PNG)](https://jenkins.autotests.cloud/job/021-knvik-jenkins_raketa_all_alltops_jira_tg/)</kbd>
 
 ## <img src="media/logo/Allure_Report.svg" title="Allure Report" width="4%"/> Пример Allure-отчета
-### Overview
+##### <a href="https://jenkins.autotests.cloud/job/021-knvik-jenkins_raketa_all_alltops_jira_tg/16/allure/#" target="_blank" rel="noopener"><span>Overview</span> </a>
 
 
 
 <kbd>[![](media/screens/Allure1.PNG)](https://jenkins.autotests.cloud/job/021-knvik-jenkins_raketa_all_alltops_jira_tg/16/allure/#)</kbd>
 
-### Результат выполнения теста
+#####  <a href="https://jenkins.autotests.cloud/job/021-knvik-jenkins_raketa_all_alltops_jira_tg/16/allure/#suites/129ac936ae3c796ae95cabb5edc1b869/16a8391194530603/" target="_blank" rel="noopener"><span>Результат выполнения теста</span> </a>
 
 <kbd>[![](media/screens/Allure2.PNG)](https://jenkins.autotests.cloud/job/021-knvik-jenkins_raketa_all_alltops_jira_tg/16/allure/#suites/129ac936ae3c796ae95cabb5edc1b869/16a8391194530603/
 )</kbd>
 
-
+#### <a href="https://jenkins.autotests.cloud/job/021-knvik-jenkins_raketa_all_alltops_jira_tg/16/allure/#behaviors/ad278f761a7c8b2f9f37925e0bd8ca8e/db272aebe61ef5c/" target="_blank" rel="noopener"><span>Behaviors</span> </a>
 
 <kbd>[![](media/screens/Allure3.PNG)](https://jenkins.autotests.cloud/job/021-knvik-jenkins_raketa_all_alltops_jira_tg/16/allure/#behaviors/ad278f761a7c8b2f9f37925e0bd8ca8e/db272aebe61ef5c/
 )</kbd>
@@ -113,8 +114,11 @@ gradle clean run_raketa -DisRemote=true
 На Dashboard в <code>Allure TestOps</code> отображена статистика пройденных тестов.
 
 
+##### <a href="https://allure.autotests.cloud/project/3718/dashboards" target="_blank" rel="noopener"><span>Dashboards</span> </a>
+
 <kbd>[![](media/screens/AllureTestOpsDash.PNG)](https://allure.autotests.cloud/project/3718/dashboards)</kbd>
 
+##### <a href="https://allure.autotests.cloud/project/3718/test-cases/26691?treeId=0" target="_blank" rel="noopener"><span>Test cases</span> </a>
 
 <kbd>[![](media/screens/AllureTestOps.PNG)](https://allure.autotests.cloud/project/3718/test-cases/26691?treeId=0)</kbd>
 
@@ -122,7 +126,7 @@ gradle clean run_raketa -DisRemote=true
 
 Реализована интеграция <code>Allure TestOps</code> с <code>Jira</code>, в тикете отображается информация, какие тест-кейсы были написаны в рамках задачи и результат их прогона.
 
-
+##### <a href="https://jira.autotests.cloud/browse/HOMEWORK-914" target="_blank" rel="noopener"><span>Jira</span> </a>
 
 <kbd>[![](media/screens/Jira.PNG)](https://jira.autotests.cloud/browse/HOMEWORK-914)</kbd>
 
