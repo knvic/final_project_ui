@@ -16,7 +16,8 @@ public interface WebConfig extends Config {
     String getBaseUrl();
 
     @Key("browser")
-    @DefaultValue("CHROME")
+    //@DefaultValue("CHROME")
+    @DefaultValue("IE")
     Browser getBrowser();
 
     @Key("browserVersion")
