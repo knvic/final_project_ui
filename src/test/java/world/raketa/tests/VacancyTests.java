@@ -108,8 +108,8 @@ public class VacancyTests extends BaseTest {
     @Link(value = "Testing", url = "https://job.raketa.world/qaautomation")
     @DisplayName("Тестирование наличия опции Йога в обед в условиях работы")
     @Tags({
-            @Tag("raketa"),
-            @Tag("smoke"),
+            @Tag("raketa")
+
 
     })
     @Test
