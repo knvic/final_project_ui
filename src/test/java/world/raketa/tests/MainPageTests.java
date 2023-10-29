@@ -29,7 +29,11 @@ public class MainPageTests extends BaseTest {
     @Story("Переключение локали")
     @DisplayName("Параметризованный тест проверки наличия списка основного меню в разных локалях")
     @MethodSource("changeLocaleTest")
-    @Tag("raketa")
+
+    @Tags({
+            @Tag("raketa"),
+            @Tag("locale")
+    })
     @ParameterizedTest(name = "Проверка меню сайта при перелючении локали на {0} отображается меню {1}")
     void changeLocaleTest(Locale locale, List<String> list) {
         step("Открытие сайта", () -> {
@@ -37,7 +41,7 @@ public class MainPageTests extends BaseTest {
                     .openPage();
         });
 
-        step("Выбор локали {0}", () -> {
+        step("Выбор локали locale", () -> {
             mainPage
                     .setLocale(locale);
 

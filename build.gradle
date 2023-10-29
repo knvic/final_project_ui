@@ -69,5 +69,11 @@ task run_smoke(type: Test) {
     }
 }
 
+task locale(type: Test) {
+    useJUnitPlatform {
+        includeTags("locale")
+    }
+}
+
 
 
