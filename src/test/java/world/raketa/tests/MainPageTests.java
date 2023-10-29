@@ -32,7 +32,7 @@ public class MainPageTests extends BaseTest {
 
     @Tags({
             @Tag("raketa"),
-            @Tag("locale")
+            @Tag("smoke")
     })
     @ParameterizedTest(name = "Проверка меню сайта при перелючении локали на {0} отображается меню {1}")
     void changeLocaleTest(Locale locale, List<String> list) {
