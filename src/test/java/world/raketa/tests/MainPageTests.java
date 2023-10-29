@@ -41,7 +41,7 @@ public class MainPageTests extends BaseTest {
                     .openPage();
         });
 
-        step("Выбор локали locale", () -> {
+        step("Выбор локали ", () -> {
             mainPage
                     .setLocale(locale);
 
