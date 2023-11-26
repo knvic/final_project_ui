@@ -92,23 +92,23 @@ gradle clean run_raketa -DisRemote=true
 
 
 
-<kbd>[![](media/screens/jenkins1.PNG)](https://jenkins.autotests.cloud/job/021-knvik-jenkins_raketa_all_alltops_jira_tg/)</kbd>
+<kbd>[![](media/screens/jenkins1.PNG)](https://jenkins.autotests.cloud/job/021-knvik-final_project_ui/)</kbd>
 
 ## <img src="media/logo/Allure_Report.svg" title="Allure Report" width="4%"/> Пример Allure-отчета
 ##### <a href="https://jenkins.autotests.cloud/job/021-knvik-jenkins_raketa_all_alltops_jira_tg/16/allure/#" target="_blank" rel="noopener"><span>Overview</span> </a>
 
 
 
-<kbd>[![](media/screens/Allure1.PNG)](https://jenkins.autotests.cloud/job/021-knvik-jenkins_raketa_all_alltops_jira_tg/16/allure/#)</kbd>
+<kbd>[![](media/screens/Allure1.PNG)](https://jenkins.autotests.cloud/job/021-knvik-final_project_ui/allure/)</kbd>
 
 #####  <a href="https://jenkins.autotests.cloud/job/021-knvik-jenkins_raketa_all_alltops_jira_tg/16/allure/#suites/129ac936ae3c796ae95cabb5edc1b869/16a8391194530603/" target="_blank" rel="noopener"><span>Результат выполнения теста</span> </a>
 
-<kbd>[![](media/screens/Allure2.PNG)](https://jenkins.autotests.cloud/job/021-knvik-jenkins_raketa_all_alltops_jira_tg/16/allure/#suites/129ac936ae3c796ae95cabb5edc1b869/16a8391194530603/
+<kbd>[![](media/screens/Allure2.PNG)](https://jenkins.autotests.cloud/job/021-knvik-final_project_ui/allure/#behaviors/aa35b6349be711bd68148bf5dae0d52a/dc2cc6033cb94f4b/
 )</kbd>
 
 #### <a href="https://jenkins.autotests.cloud/job/021-knvik-jenkins_raketa_all_alltops_jira_tg/16/allure/#behaviors/ad278f761a7c8b2f9f37925e0bd8ca8e/db272aebe61ef5c/" target="_blank" rel="noopener"><span>Behaviors</span> </a>
 
-<kbd>[![](media/screens/Allure3.PNG)](https://jenkins.autotests.cloud/job/021-knvik-jenkins_raketa_all_alltops_jira_tg/16/allure/#behaviors/ad278f761a7c8b2f9f37925e0bd8ca8e/db272aebe61ef5c/
+<kbd>[![](media/screens/Allure3.PNG)](https://jenkins.autotests.cloud/job/021-knvik-final_project_ui/allure/#behaviors/6c3d8c6182db1f06d81dd501ad395535/1ae3098a66ec0716/
 )</kbd>
 
 ## <img src="media/logo/AllureTestOps.svg" title="Allure TestOps" width="4%"/> Интеграция с Allure TestOps
