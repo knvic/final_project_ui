@@ -3,6 +3,7 @@
 <p align="center">
 <img width="30%" title="Raketa" src="media/logo/logo.png" alt="center">
 </p> 
+
 * ### https://raketa.world/ – тестируемый ресурс.
 
 
