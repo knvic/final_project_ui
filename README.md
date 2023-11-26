@@ -3,7 +3,7 @@
 
 * ### https://raketa.world/ – тестируемый ресурс.
 
-<img width="30%" title="Java" src="media/logo/logo.png">
+<img width="30%" title="Raketa" src="media/logo/logo.png">
 
 ## :pushpin: Содержание:
 
