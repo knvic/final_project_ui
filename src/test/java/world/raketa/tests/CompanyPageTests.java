@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import world.raketa.pages.*;
 import static io.qameta.allure.Allure.step;
 
+
 @Epic("Ракета")
 @Feature("Первоначальное тестирование")
 @Owner("krivorotovnv")
@@ -62,6 +63,55 @@ public class CompanyPageTests extends BaseTest {
             companyPage
                     .checkVisibleInputTab();
         });
+
+    }
+
+
+    @Story("Заполнение формы обратной связи")
+    @DisplayName("Проверка появления значения ошибочного ввода в атрибуте class в поле Email c предварительно не корректным заполнением поля .")
+    @Tags({
+            @Tag("raketa")
+    })
+    @Test
+    void checkingErrorValueAttributeFieldFeedbackForm() {
+        step("Открытие сайта", () -> {
+            mainPage
+                    .openPage();
+        });
+        step("Ожидаем корректной загрузки стартовой страницы (появление определенного текста) ", () -> {
+            mainPage
+                    .waitingForTheSiteToLoad();
+        });
+
+        step("Находим пункт меню КОМПАНИЯ и кликаем на него", () -> {
+            mainPage
+                    .goToTheMenuItemCompany();
+        });
+        step("Ожидаем корректной загрузки страницы Компания и наличия в нем определенного текста ", () -> {
+            companyPage
+                    .waitingForTheSiteCompanyToLoad();
+        });
+
+        step("Нажимаем на кнопку вызова окна ввода данных для связи ", () -> {
+            companyPage
+                    .callingInputTab();
+        });
+
+        step("Проверяем загрузку и видимость окна", () -> {
+            companyPage
+                    .checkVisibleInputTab();
+        });
+
+        step("Заполняем поля формы. Поле email вводим не правильно, чтобы форма не отправлялась и жмем отправить", () -> {
+            companyPage
+                    .fillingTheForm();
+        });
+
+        step("Проверяем появление в атрибуте class значения 'js-error-control-box' в предварительно неправильно заполненном поле Email", () -> {
+            companyPage
+                    .checkErrorValueTextInAttributeClass();
+        });
+
 
     }
 

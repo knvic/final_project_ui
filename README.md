@@ -3,6 +3,8 @@
 
 * ### https://raketa.world/ – тестируемый ресурс.
 
+<img width="30%" title="Java" src="media/logo/logo.png">
+
 ## :pushpin: Содержание:
 
 - [Использованный стек технологий](#computer-использованный-стек-технологий)

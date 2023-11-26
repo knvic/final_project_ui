@@ -4,10 +4,11 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import world.raketa.utils.DataGenerationUtils;
 import java.time.Duration;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CompanyPage {
 
@@ -22,7 +23,9 @@ SelenideElement
         buttonSubmit = tabInput.$("[type=submit]");
 
     ElementsCollection
-            fieldText = $$("div [field=text]");
+            fieldText = $$("div [field=text]"),
+    fieldEmailFindWithAncestor =$$("input[name='Email']");
+
 
     public CompanyPage waitingForTheSiteCompanyToLoad() {
         fieldText.first().shouldHave(text("Компания Ракета – российский разработчик"));
@@ -49,4 +52,11 @@ SelenideElement
         buttonSubmit.click();
         return this;
     }
+
+    public CompanyPage checkErrorValueTextInAttributeClass() {
+              assertThat(fieldEmailFindWithAncestor.first().ancestor("div").ancestor("div").getAttribute("class")).endsWith("js-error-control-box");
+        return this;
+    }
+
+
 }

@@ -17,7 +17,8 @@ public class MainPage {
             topMenu = $(".t199__holder"),
             selectLocale = $(".box_lang"),
             vacancy = $("[href='https://job.raketa.world/page28587673.html']"),
-            m_navigation = $("[aria-label='Основная навигация']"),
+           // m_navigation = $("[aria-label='Основная навигация']"),
+            m_navigation = $("[class='t199__mmenu t199__js__menu']"),
             linkToThePageCareer = $("[href='/career']");
     ElementsCollection
             pullDownElement = $$(".t199__holder li"),
