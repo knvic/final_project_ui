@@ -1,9 +1,10 @@
 
 <h1> Проект по автоматизации тестовых сценариев для сайта цифровой платформы для организации командировок и управления расходами  </h1>
-
+<p align="center">
+<img width="30%" title="Raketa" src="media/logo/logo.png" alt="center">
+</p> 
 * ### https://raketa.world/ – тестируемый ресурс.
 
-<img width="30%" title="Raketa" src="media/logo/logo.png">
 
 ## :pushpin: Содержание:
 
