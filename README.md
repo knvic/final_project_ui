@@ -132,7 +132,7 @@ gradle clean run_raketa -DisRemote=true
 
 ##### <a href="https://jira.autotests.cloud/browse/HOMEWORK-914" target="_blank" rel="noopener"><span>Jira</span> </a>
 
-<kbd>[![](media/screens/Jira.PNG)](https://jira.autotests.cloud/browse/HOMEWORK-914)</kbd>
+<kbd>[![](media/screens/Jira.PNG)](https://jira.autotests.cloud/browse/HOMEWORK-993)</kbd>
 
 
 ## <img width="4%" style="vertical-align:middle" title="Telegram" src="media/logo/Telegram.svg"> Уведомления в Telegram с использованием бота
